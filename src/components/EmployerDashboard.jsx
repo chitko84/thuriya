@@ -491,7 +491,7 @@ export default function EmployerDashboard({ setCurrentView }) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-              className="fixed inset-0 m-auto w-full max-w-md h-fit bg-[#161B22] border border-[#1E262F] rounded-2xl p-6 z-50 shadow-2xl space-y-6"
+              className="fixed inset-x-4 inset-y-auto md:inset-0 m-auto w-[calc(100%-2rem)] md:w-full max-w-md max-h-[90vh] overflow-y-auto bg-[#161B22] border border-[#1E262F] rounded-2xl p-6 z-50 shadow-2xl space-y-6"
             >
               <div className="flex items-center gap-3 border-b border-[#1E262F] pb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
@@ -617,7 +617,7 @@ export default function EmployerDashboard({ setCurrentView }) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed inset-0 m-auto w-full max-w-xl h-fit bg-[#161B22] border border-[#1E262F] rounded-2xl p-6 z-50 shadow-2xl space-y-6 overflow-hidden"
+              className="fixed inset-x-4 inset-y-auto md:inset-0 m-auto w-[calc(100%-2rem)] md:w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#161B22] border border-[#1E262F] rounded-2xl p-6 z-50 shadow-2xl space-y-6"
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b border-[#1E262F] pb-4">

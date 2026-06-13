@@ -32,10 +32,10 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
         transition={{ duration: 0.3 }}
-        className="w-full max-w-xl bg-[#161B22] border border-[#1E262F] rounded-2xl shadow-2xl overflow-hidden"
+        className="w-full max-w-xl max-h-[90vh] flex flex-col bg-[#161B22] border border-[#1E262F] rounded-2xl shadow-2xl overflow-hidden"
       >
         {/* Header Branding */}
-        <div className="p-6 border-b border-[#1E262F] flex items-center justify-between bg-[#0B0F12]/40">
+        <div className="p-6 border-b border-[#1E262F] flex items-center justify-between bg-[#0B0F12]/40 flex-shrink-0">
           <BrandLogo />
           <button
             onClick={() => setCurrentView('gateway')}
@@ -45,7 +45,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-6 md:p-8 overflow-y-auto flex-1">
           {/* Tab Controller */}
           <div className="flex bg-[#0B0F12] p-1 rounded-lg border border-[#1E262F] mb-8">
             <button
@@ -132,15 +132,17 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                     setSelectedRole('candidate');
                     setError('');
                   }}
-                  className={`flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all ${
+                  className={`flex flex-row md:flex-col items-center md:justify-center p-3 md:p-4 rounded-xl border text-left md:text-center gap-3 md:gap-0 transition-all ${
                     selectedRole === 'candidate'
                       ? 'border-[#00E5FF] bg-[#00E5FF]/5 shadow-[0_0_15px_rgba(0,229,255,0.1)]'
                       : 'border-[#1E262F] bg-[#0B0F12] hover:border-[#8A99A5]/40'
                   }`}
                 >
-                  <User className={`w-6 h-6 mb-2 ${selectedRole === 'candidate' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
-                  <span className="text-xs font-bold text-[#F7F9FA] block">Candidate</span>
-                  <span className="text-[10px] text-[#8A99A5] mt-1 leading-tight">Student / Dev Portfolio</span>
+                  <User className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'candidate' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
+                  <div className="flex flex-col md:items-center">
+                    <span className="text-xs font-bold text-[#F7F9FA] block">Candidate</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Student / Dev Portfolio</span>
+                  </div>
                 </button>
 
                 {/* Employer Workspace */}
@@ -150,15 +152,17 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                     setSelectedRole('employer');
                     setError('');
                   }}
-                  className={`flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all ${
+                  className={`flex flex-row md:flex-col items-center md:justify-center p-3 md:p-4 rounded-xl border text-left md:text-center gap-3 md:gap-0 transition-all ${
                     selectedRole === 'employer'
                       ? 'border-[#00E5FF] bg-[#00E5FF]/5 shadow-[0_0_15px_rgba(0,229,255,0.1)]'
                       : 'border-[#1E262F] bg-[#0B0F12] hover:border-[#8A99A5]/40'
                   }`}
                 >
-                  <Briefcase className={`w-6 h-6 mb-2 ${selectedRole === 'employer' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
-                  <span className="text-xs font-bold text-[#F7F9FA] block">Recruiter</span>
-                  <span className="text-[10px] text-[#8A99A5] mt-1 leading-tight">Talent Discovery Command</span>
+                  <Briefcase className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'employer' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
+                  <div className="flex flex-col md:items-center">
+                    <span className="text-xs font-bold text-[#F7F9FA] block">Recruiter</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Talent Discovery Command</span>
+                  </div>
                 </button>
 
                 {/* University Console */}
@@ -168,15 +172,17 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                     setSelectedRole('university');
                     setError('');
                   }}
-                  className={`flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all ${
+                  className={`flex flex-row md:flex-col items-center md:justify-center p-3 md:p-4 rounded-xl border text-left md:text-center gap-3 md:gap-0 transition-all ${
                     selectedRole === 'university'
                       ? 'border-[#00E5FF] bg-[#00E5FF]/5 shadow-[0_0_15px_rgba(0,229,255,0.1)]'
                       : 'border-[#1E262F] bg-[#0B0F12] hover:border-[#8A99A5]/40'
                   }`}
                 >
-                  <GraduationCap className={`w-6 h-6 mb-2 ${selectedRole === 'university' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
-                  <span className="text-xs font-bold text-[#F7F9FA] block">University</span>
-                  <span className="text-[10px] text-[#8A99A5] mt-1 leading-tight">Academic Console Telemetry</span>
+                  <GraduationCap className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'university' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
+                  <div className="flex flex-col md:items-center">
+                    <span className="text-xs font-bold text-[#F7F9FA] block">University</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Academic Console Telemetry</span>
+                  </div>
                 </button>
               </div>
             </div>

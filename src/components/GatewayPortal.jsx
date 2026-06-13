@@ -201,11 +201,11 @@ export default function GatewayPortal({ setCurrentView }) {
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#FFD369]/[0.03] rounded-full blur-[120px] pointer-events-none -z-10" />
 
       {/* Top Navigation Bar */}
-      <header className="w-full bg-[#161B22]/80 backdrop-blur-md border-b border-[#1E262F] sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+      <header className="w-full bg-[#161B22]/80 backdrop-blur-md border-b border-[#1E262F] sticky top-0 z-40 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
         <BrandLogo />
         <button
           onClick={() => setCurrentView('auth_modal')}
-          className="px-5 py-2.5 bg-[#00E5FF] text-[#0B0F12] font-extrabold rounded-xl hover:bg-[#00E5FF]/90 transition-all text-xs uppercase tracking-wider font-mono shadow-[0_4px_20px_rgba(0,229,255,0.25)] hover:scale-[1.02]"
+          className="px-3 md:px-5 py-2 md:py-2.5 bg-[#00E5FF] text-[#0B0F12] font-extrabold rounded-xl hover:bg-[#00E5FF]/90 transition-all text-[10px] md:text-xs uppercase tracking-wider font-mono shadow-[0_4px_20px_rgba(0,229,255,0.25)] hover:scale-[1.02]"
         >
           Access Console
         </button>
