@@ -130,12 +130,6 @@ const COHORT_SIZES = {
   '2028': '1,650'
 };
 
-const COHORT_LABELS = {
-  '2026': 'Class of 2026 • Summer Batch',
-  '2027': 'Class of 2027 • Winter Batch',
-  '2028': 'Class of 2028 • Pre-graduates'
-};
-
 // Sandbox upgrades lookup per department
 const SANDBOX_UPGRADES_BY_DEPT = {
   cs: [

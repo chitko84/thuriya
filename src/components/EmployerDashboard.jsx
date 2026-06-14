@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Filter, Send, ShieldCheck, Check, 
-  Layers, Terminal, X, AlertTriangle 
+  Layers, Terminal, X 
 } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 

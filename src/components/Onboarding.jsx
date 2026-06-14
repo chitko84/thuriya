@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { GitBranch, FileText, CheckCircle, Building, Layers, Globe, Calendar, Compass, ShieldCheck } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
