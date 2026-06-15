@@ -120,12 +120,51 @@ $ go test -v -race ./...`}
   )
 };
 
-const HeroLiveTerminal = () => {
-  const [lines, setLines] = useState([
+const SKILLS_TOP = [
+  { name: 'Git', prof: 'Expert', status: 'Verified' },
+  { name: 'Docker', prof: 'Advanced', status: 'Verified' },
+  { name: 'Python', prof: 'Expert', status: 'Verified' },
+  { name: 'FastAPI', prof: 'Advanced', status: 'Verified' },
+  { name: 'SQL', prof: 'Expert', status: 'Verified' },
+  { name: 'Apache Kafka', prof: 'Intermediate', status: 'Verified' },
+  { name: 'Golang', prof: 'Advanced', status: 'Verified' },
+  { name: 'Rust', prof: 'Intermediate', status: 'Verified' },
+  { name: 'AWS Cloud', prof: 'Expert', status: 'Verified' },
+  { name: 'Kubernetes', prof: 'Advanced', status: 'Verified' },
+  { name: 'React', prof: 'Expert', status: 'Verified' },
+  { name: 'Tailwind CSS', prof: 'Expert', status: 'Verified' },
+  { name: 'Next.js', prof: 'Advanced', status: 'Verified' },
+  { name: 'PostgreSQL', prof: 'Expert', status: 'Verified' }
+];
+
+const SKILLS_BOTTOM = [
+  { name: 'GitHub Actions', prof: 'Expert', status: 'Verified' },
+  { name: 'Linux OS', prof: 'Expert', status: 'Verified' },
+  { name: 'Algorithms', prof: 'Advanced', status: 'Verified' },
+  { name: 'REST APIs', prof: 'Expert', status: 'Verified' },
+  { name: 'NoSQL Databases', prof: 'Advanced', status: 'Verified' },
+  { name: 'Celery Queues', prof: 'Intermediate', status: 'Verified' },
+  { name: 'Sockets', prof: 'Advanced', status: 'Verified' },
+  { name: 'Concurrency', prof: 'Advanced', status: 'Verified' },
+  { name: 'Google Cloud', prof: 'Intermediate', status: 'Verified' },
+  { name: 'CI/CD Automation', prof: 'Expert', status: 'Verified' },
+  { name: 'TypeScript', prof: 'Advanced', status: 'Verified' },
+  { name: 'HTML5 & CSS3', prof: 'Expert', status: 'Verified' },
+  { name: 'Serverless Functions', prof: 'Advanced', status: 'Verified' },
+  { name: 'GraphQL API', prof: 'Intermediate', status: 'Verified' }
+];
+
+const DnaLedgerVisualizer = () => {
+  const [logs, setLogs] = useState([
     '> [SYSTEM] Connecting candidate profile...',
     '> [SYSTEM] Verification: 100% Verified'
   ]);
-  
+  const [syncSpeed, setSyncSpeed] = useState(1);
+  const [hoveredNode, setHoveredNode] = useState(null);
+  const [isAuditing, setIsAuditing] = useState(false);
+  const [activePulseColumn, setActivePulseColumn] = useState(-1);
+  const [sweepX, setSweepX] = useState(0);
+
   useEffect(() => {
     const mockEvents = [
       'SYNC: Connected GitHub profile "dev_block_0x4f"',
@@ -138,106 +177,215 @@ const HeroLiveTerminal = () => {
     ];
     
     let idx = 0;
-    const interval = setInterval(() => {
-      setLines(prev => {
-        const next = [...prev, `> [SYSTEM] ${mockEvents[idx % mockEvents.length]}`];
-        if (next.length > 5) next.shift();
-        return next;
-      });
-      idx++;
-    }, 2500);
+    const runInterval = () => {
+      return setInterval(() => {
+        setLogs(prev => {
+          const next = [...prev, `> [SYSTEM] ${mockEvents[idx % mockEvents.length]}`];
+          if (next.length > 4) next.shift();
+          return next;
+        });
+        idx++;
+      }, 2500 / syncSpeed);
+    };
+
+    let interval = runInterval();
     return () => clearInterval(interval);
-  }, []);
-  
-  return (
-    <div className="bg-[#0B0F12]/80 border border-[#1E262F] rounded-xl p-4 font-mono text-[10px] text-[#8A99A5] h-32 overflow-hidden flex flex-col justify-between shadow-inner">
-      {lines.map((line, idx) => (
-        <div key={idx} className={line.includes('VERIFY') || line.includes('SYNC') ? 'text-[#00E5FF]' : line.includes('SYSTEM') ? 'text-[#8A99A5]' : 'text-[#8A99A5]/80'}>
-          {line}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Slideshow Configuration
-const SLIDES = [
-  {
-    image: '/images/workspace_preview.png',
-    title: 'Your Dashboard Preview',
-    desc: 'View all your verified coding skills and projects in one clean dashboard.'
-  },
-  {
-    image: '/images/skills_badge.png',
-    title: 'Smart Verified Badges',
-    desc: 'Get certified coding credentials that prove your skills directly from your code.'
-  },
-  {
-    image: '/images/team_collaboration.png',
-    title: 'Connect with Jobs',
-    desc: 'Let top recruiters view your factual, verified progress and match with real pipelines.'
-  }
-];
-
-const HeroSlideshow = () => {
-  const [slideIdx, setSlideIdx] = useState(0);
+  }, [syncSpeed]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIdx(prev => (prev + 1) % SLIDES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    let frame;
+    let start = Date.now();
+    const updateSweep = () => {
+      const elapsed = Date.now() - start;
+      const period = 3000 / syncSpeed;
+      const phase = (elapsed % period) / period;
+      const currentX = 35 + Math.sin(phase * Math.PI * 2) * 165 + 165; 
+      setSweepX(currentX);
+
+      const colIdx = Math.round((currentX - 45) / 24);
+      if (colIdx >= 0 && colIdx < 14) {
+        setActivePulseColumn(colIdx);
+      } else {
+        setActivePulseColumn(-1);
+      }
+
+      frame = requestAnimationFrame(updateSweep);
+    };
+    frame = requestAnimationFrame(updateSweep);
+    return () => cancelAnimationFrame(frame);
+  }, [syncSpeed]);
+
+  const triggerAudit = () => {
+    if (isAuditing) return;
+    setIsAuditing(true);
+    setLogs(prev => [
+      ...prev.slice(-2),
+      `> [AUDIT] Initiating full system security check...`,
+      `> [AUDIT] Verification Status: 100% SECURE`
+    ]);
+    setTimeout(() => {
+      setIsAuditing(false);
+    }, 1200);
+  };
+
+  const handleNodeHover = (skill, isTop, idx, cx, cy) => {
+    setHoveredNode({
+      ...skill,
+      x: cx,
+      y: cy,
+      isTop,
+      idx
+    });
+    setLogs(prev => {
+      const next = [...prev, `> [INFO] Hovered over "${skill.name}" node - 100% verified`];
+      if (next.length > 4) next.shift();
+      return next;
+    });
+  };
 
   return (
-    <div className="relative w-full h-[360px] rounded-2xl overflow-hidden border border-[#1E262F] bg-[#161B22]/50 shadow-2xl flex flex-col justify-between p-6 group">
-      {/* Background slide image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={SLIDES[slideIdx].image} 
-          alt={SLIDES[slideIdx].title} 
-          className="w-full h-full object-cover opacity-50 transition-all duration-750 ease-in-out"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F12] via-[#0B0F12]/60 to-transparent" />
-      </div>
+    <div className="bg-[#161B22]/60 border border-[#1E262F] rounded-2xl p-5 backdrop-blur-md shadow-2xl space-y-4 relative overflow-hidden flex flex-col justify-between h-[390px] group transition-all duration-300 hover:border-[#00E5FF]/20 lg:col-span-5">
+      
+      {isAuditing && (
+        <div className="absolute inset-0 bg-[#00E5FF]/5 animate-pulse pointer-events-none z-20 border border-[#00E5FF]/40 rounded-2xl" />
+      )}
 
-      {/* Label Indicator */}
-      <div className="relative z-10 self-end text-[8px] font-mono text-[#8A99A5]/40 tracking-wider">
-        PREVIEW_0{slideIdx + 1}
-      </div>
-
-      {/* Caption Content */}
-      <div className="relative z-10 space-y-2 max-w-sm mt-auto">
-        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#00E5FF] px-2 py-0.5 rounded bg-[#00E5FF]/10 border border-[#00E5FF]/20">
-          Features Preview
+      <div className="flex items-center justify-between z-10 relative">
+        <span className="text-[9px] font-mono text-[#8A99A5] bg-[#0B0F12] px-2 py-0.5 rounded border border-[#1E262F] uppercase">
+          DNA Ledger Visualizer
         </span>
-        <h3 className="text-base font-bold text-[#F7F9FA]">{SLIDES[slideIdx].title}</h3>
-        <p className="text-xs text-[#8A99A5] leading-relaxed">{SLIDES[slideIdx].desc}</p>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setSyncSpeed(prev => (prev === 1 ? 2.5 : 1))}
+            className={`px-2 py-0.5 border rounded text-[8px] font-mono font-bold transition-all ${
+              syncSpeed > 1 
+                ? 'bg-[#00E5FF]/20 text-[#00E5FF] border-[#00E5FF]' 
+                : 'bg-[#0B0F12] border-[#1E262F] text-[#8A99A5] hover:text-[#F7F9FA]'
+            }`}
+          >
+            {syncSpeed > 1 ? '⚡ BOOST ON' : '⚡ BOOST'}
+          </button>
+          <button
+            onClick={triggerAudit}
+            className="px-2 py-0.5 bg-[#0B0F12] border border-[#1E262F] hover:border-[#FFD369] text-[#8A99A5] hover:text-[#FFD369] rounded text-[8px] font-mono font-bold transition-all"
+          >
+            🔍 AUDIT
+          </button>
+        </div>
       </div>
 
-      {/* Manual Indicator Dots */}
-      <div className="relative z-10 flex justify-center gap-1.5 pt-3">
-        {SLIDES.map((_, idx) => (
-          <button
-            key={idx}
-            type="button"
-            onClick={() => setSlideIdx(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              slideIdx === idx ? 'bg-[#00E5FF] w-4' : 'bg-[#1E262F] hover:bg-[#8A99A5]'
-            }`}
-          />
-        ))}
+      <div className="flex-1 flex items-center justify-center w-full min-h-[170px] relative">
+        <div 
+          className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#00E5FF]/40 to-transparent pointer-events-none z-10"
+          style={{ left: `${(sweepX / 400) * 100}%` }}
+        />
+
+        <svg className="w-full h-full max-h-[180px] z-10" viewBox="0 0 400 160">
+          {Array.from({ length: 14 }).map((_, i) => {
+            const angle = (i * Math.PI) / 6;
+            const topSkill = SKILLS_TOP[i];
+            const bottomSkill = SKILLS_BOTTOM[i];
+            const cx = 45 + i * 24;
+            const yOffset = Math.sin(angle) * 35;
+            const isPulsed = activePulseColumn === i;
+
+            return (
+              <g key={i}>
+                <line
+                  x1={cx}
+                  y1={80 + yOffset}
+                  x2={cx}
+                  y2={80 - yOffset}
+                  stroke="#1E262F"
+                  strokeWidth={isPulsed ? "2" : "0.75"}
+                  strokeOpacity={isPulsed ? "0.6" : "0.2"}
+                />
+
+                <motion.circle
+                  cx={cx}
+                  cy={80 + yOffset}
+                  r={isPulsed ? 6 : hoveredNode?.isTop && hoveredNode?.idx === i ? 7 : 4}
+                  fill="#00E5FF"
+                  className="cursor-pointer"
+                  onMouseEnter={() => handleNodeHover(topSkill, true, i, cx, 80 + yOffset)}
+                  onMouseLeave={() => setHoveredNode(null)}
+                  animate={isPulsed ? { scale: [1, 1.25, 1] } : {}}
+                />
+
+                <motion.circle
+                  cx={cx}
+                  cy={80 - yOffset}
+                  r={isPulsed ? 6 : !hoveredNode?.isTop && hoveredNode?.idx === i ? 7 : 4}
+                  fill="#FFD369"
+                  className="cursor-pointer"
+                  onMouseEnter={() => handleNodeHover(bottomSkill, false, i, cx, 80 - yOffset)}
+                  onMouseLeave={() => setHoveredNode(null)}
+                  animate={isPulsed ? { scale: [1, 1.25, 1] } : {}}
+                />
+              </g>
+            );
+          })}
+
+          {hoveredNode && (
+            <g>
+              <rect
+                x={hoveredNode.x - 45}
+                y={hoveredNode.isTop ? hoveredNode.y - 45 : hoveredNode.y + 12}
+                width="90"
+                height="30"
+                rx="4"
+                fill="#0B0F12"
+                stroke={hoveredNode.isTop ? "#00E5FF" : "#FFD369"}
+                strokeWidth="1"
+                opacity="0.95"
+              />
+              <text x={hoveredNode.x - 39} y={hoveredNode.isTop ? hoveredNode.y - 33 : hoveredNode.y + 24} fill="#F7F9FA" fontSize="8" fontWeight="bold">
+                {hoveredNode.name}
+              </text>
+              <text x={hoveredNode.x - 39} y={hoveredNode.isTop ? hoveredNode.y - 23 : hoveredNode.y + 34} fill="#8A99A5" fontSize="6.5">
+                {hoveredNode.prof} • {hoveredNode.status}
+              </text>
+            </g>
+          )}
+        </svg>
       </div>
+
+      <div className="bg-[#0B0F12]/80 border border-[#1E262F] rounded-xl p-3.5 font-mono text-[9px] text-[#8A99A5] h-24 overflow-hidden flex flex-col justify-between shadow-inner">
+        {logs.map((line, logIdx) => {
+          let lineClass = 'text-[#8A99A5]/80';
+          if (line.includes('VERIFY') || line.includes('SYNC')) {
+            lineClass = 'text-[#00E5FF] font-semibold';
+          } else if (line.includes('AUDIT')) {
+            lineClass = 'text-[#FFD369] font-semibold animate-pulse';
+          } else if (line.includes('INFO')) {
+            lineClass = 'text-[#FFD369]/90';
+          }
+          return (
+            <div key={logIdx} className={lineClass}>
+              {line}
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   );
 };
+
+
 
 export default function GatewayPortal({ setCurrentView }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
   const [authWarning, setAuthWarning] = useState(false);
-  const [activeSubTab, setActiveSubTab] = useState('home'); // 'home' | 'about' | 'features'
+  const [activeSubTab, setActiveSubTab] = useState(() => {
+    return localStorage.getItem('careerdna_gateway_tab') || 'home';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('careerdna_gateway_tab', activeSubTab);
+  }, [activeSubTab]);
 
   const handleApplyClick = () => {
     setAuthWarning(true);
@@ -361,11 +509,8 @@ export default function GatewayPortal({ setCurrentView }) {
                 </div>
               </div>
 
-              {/* Hero Right Slideshow */}
-              <div className="lg:col-span-5 space-y-6">
-                <HeroSlideshow />
-                <HeroLiveTerminal />
-              </div>
+              {/* Hero Right Visualizer */}
+              <DnaLedgerVisualizer />
               
             </section>
 

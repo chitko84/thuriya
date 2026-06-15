@@ -70,7 +70,13 @@ const MOCK_SIGNALS = [
 ];
 
 export default function EmployerDashboard({ setCurrentView }) {
-  const [empTab, setEmpTab] = useState('discovery'); // 'discovery' | 'postings'
+  const [empTab, setEmpTab] = useState(() => {
+    return localStorage.getItem('careerdna_employer_tab') || 'discovery';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('careerdna_employer_tab', empTab);
+  }, [empTab]);
   const [invitedCandidates, setInvitedCandidates] = useState([]); // List of invited candidate IDs
   const [showSandboxModal, setShowSandboxModal] = useState(false);
   const [provisioningStatus, setProvisioningStatus] = useState('idle'); // 'idle' | 'provisioning' | 'completed'

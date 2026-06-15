@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   History as HistoryIcon, Compass, MessageSquare, GitBranch, FileText, 
@@ -118,7 +118,13 @@ const STAGE_DETAILS = {
 };
 
 export default function CandidateDashboard({ setCurrentView }) {
-  const [candTab, setCandTab] = useState('portfolio'); // 'portfolio' | 'navigator' | 'ai_coach'
+  const [candTab, setCandTab] = useState(() => {
+    return localStorage.getItem('careerdna_candidate_tab') || 'portfolio';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('careerdna_candidate_tab', candTab);
+  }, [candTab]);
   const [selectedPathNode, setSelectedPathNode] = useState('mlops');
   const [selectedStageNode, setSelectedStageNode] = useState(null);
   const [verifyingMilestone, setVerifyingMilestone] = useState({});
@@ -403,56 +409,89 @@ export default function CandidateDashboard({ setCurrentView }) {
                 </p>
               </div>
 
-              <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-6 space-y-6">
-                
-                {/* Python / FastAPI Progress */}
-                <div className="flex items-center gap-4">
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle cx="32" cy="32" r="28" stroke="#1E262F" strokeWidth="4" fill="transparent" />
-                      <circle cx="32" cy="32" r="28" stroke="#00E5FF" strokeWidth="4" fill="transparent"
-                        strokeDasharray={175} strokeDashoffset={175 * (1 - 0.75)} strokeLinecap="round" />
-                    </svg>
-                    <span className="absolute text-[10px] font-mono font-bold text-[#00E5FF]">75u</span>
-                  </div>
-                  <div className="space-y-0.5">
-                    <h4 className="text-xs font-bold text-[#F7F9FA]">Python & FastAPI Engine</h4>
-                    <p className="text-[10px] text-[#8A99A5]">75 verified project files.</p>
-                  </div>
-                </div>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "Python & FastAPI Engine",
+                    desc: "75 verified project files.",
+                    val: 75,
+                    color: "#00E5FF",
+                    glow: "rgba(0, 229, 255, 0.4)"
+                  },
+                  {
+                    title: "Infrastructure & Docker",
+                    desc: "50 successful build runs.",
+                    val: 50,
+                    color: "#FFD369",
+                    glow: "rgba(255, 211, 105, 0.4)"
+                  },
+                  {
+                    title: "Go Systems Architecture",
+                    desc: "35 network programs verified.",
+                    val: 35,
+                    color: "#FF5252",
+                    glow: "rgba(255, 82, 82, 0.4)"
+                  }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ scale: 1.02, translateY: -2 }}
+                    className="flex items-center gap-4 bg-[#161B22]/60 border border-[#1E262F] hover:border-transparent rounded-xl p-4 transition-all duration-300 relative overflow-hidden group shadow-lg"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, rgba(22, 27, 34, 0.8), rgba(22, 27, 34, 0.4))`
+                    }}
+                  >
+                    {/* Glow border overlay on hover */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        border: `1px solid ${item.color}`,
+                        borderRadius: '12px',
+                        boxShadow: `0 0 15px ${item.glow}`
+                      }}
+                    />
 
-                {/* Infrastructure / Docker Progress */}
-                <div className="flex items-center gap-4">
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle cx="32" cy="32" r="28" stroke="#1E262F" strokeWidth="4" fill="transparent" />
-                      <circle cx="32" cy="32" r="28" stroke="#FFD369" strokeWidth="4" fill="transparent"
-                        strokeDasharray={175} strokeDashoffset={175 * (1 - 0.50)} strokeLinecap="round" />
-                    </svg>
-                    <span className="absolute text-[10px] font-mono font-bold text-[#FFD369]">50u</span>
-                  </div>
-                  <div className="space-y-0.5">
-                    <h4 className="text-xs font-bold text-[#F7F9FA]">Infrastructure & Docker</h4>
-                    <p className="text-[10px] text-[#8A99A5]">50 successful build runs.</p>
-                  </div>
-                </div>
+                    {/* Left: Circular Progress Ring */}
+                    <div className="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-full h-full transform -rotate-90">
+                        {/* Background Ring */}
+                        <circle cx="28" cy="28" r="24" stroke="#1E262F" strokeWidth="3.5" fill="transparent" />
+                        {/* Active Progress Ring */}
+                        <motion.circle
+                          cx="28"
+                          cy="28"
+                          r="24"
+                          stroke={item.color}
+                          strokeWidth="3.5"
+                          fill="transparent"
+                          strokeDasharray={151}
+                          initial={{ strokeDashoffset: 151 }}
+                          animate={{ strokeDashoffset: 151 * (1 - item.val / 100) }}
+                          transition={{ duration: 1.5, ease: "easeOut", delay: idx * 0.2 }}
+                          strokeLinecap="round"
+                          style={{
+                            filter: `drop-shadow(0 0 4px ${item.color})`
+                          }}
+                        />
+                      </svg>
+                      <span className="absolute text-[10px] font-mono font-black text-white">{item.val}%</span>
+                    </div>
 
-                {/* Systems / Go Progress */}
-                <div className="flex items-center gap-4">
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle cx="32" cy="32" r="28" stroke="#1E262F" strokeWidth="4" fill="transparent" />
-                      <circle cx="32" cy="32" r="28" stroke="#FF5252" strokeWidth="4" fill="transparent"
-                        strokeDasharray={175} strokeDashoffset={175 * (1 - 0.35)} strokeLinecap="round" />
-                    </svg>
-                    <span className="absolute text-[10px] font-mono font-bold text-[#FF5252]">35u</span>
-                  </div>
-              <div className="space-y-0.5">
-                    <h4 className="text-xs font-bold text-[#F7F9FA]">Go Systems Architecture</h4>
-                    <p className="text-[10px] text-[#8A99A5]">35 network programs verified.</p>
-                  </div>
-                </div>
-
+                    {/* Right: Info */}
+                    <div className="space-y-1">
+                      <h4 className="text-xs font-black text-[#F7F9FA] group-hover:text-white transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="text-[10px] text-[#8A99A5] font-semibold leading-none">
+                        {item.desc}
+                      </p>
+                      <div className="flex items-center gap-1.5 pt-0.5">
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: item.color, boxShadow: `0 0 6px ${item.color}` }} />
+                        <span className="text-[8px] font-mono text-[#8A99A5] uppercase tracking-wider">verified metric</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
 
               {/* Live Ledger Telemetry Terminal */}
