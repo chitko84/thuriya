@@ -160,77 +160,7 @@ const HeroLiveTerminal = () => {
   );
 };
 
-// Slideshow Configuration
-const SLIDES = [
-  {
-    image: '/images/workspace_preview.png',
-    title: 'Your Dashboard Preview',
-    desc: 'View all your verified coding skills and projects in one clean dashboard.'
-  },
-  {
-    image: '/images/skills_badge.png',
-    title: 'Smart Verified Badges',
-    desc: 'Get certified coding credentials that prove your skills directly from your code.'
-  },
-  {
-    image: '/images/team_collaboration.png',
-    title: 'Connect with Jobs',
-    desc: 'Let top recruiters view your factual, verified progress and match with real pipelines.'
-  }
-];
 
-const HeroSlideshow = () => {
-  const [slideIdx, setSlideIdx] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIdx(prev => (prev + 1) % SLIDES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative w-full h-[360px] rounded-2xl overflow-hidden border border-[#1E262F] bg-[#161B22]/50 shadow-2xl flex flex-col justify-between p-6 group">
-      {/* Background slide image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={SLIDES[slideIdx].image} 
-          alt={SLIDES[slideIdx].title} 
-          className="w-full h-full object-cover opacity-50 transition-all duration-750 ease-in-out"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F12] via-[#0B0F12]/60 to-transparent" />
-      </div>
-
-      {/* Label Indicator */}
-      <div className="relative z-10 self-end text-[8px] font-mono text-[#8A99A5]/40 tracking-wider">
-        PREVIEW_0{slideIdx + 1}
-      </div>
-
-      {/* Caption Content */}
-      <div className="relative z-10 space-y-2 max-w-sm mt-auto">
-        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#00E5FF] px-2 py-0.5 rounded bg-[#00E5FF]/10 border border-[#00E5FF]/20">
-          Features Preview
-        </span>
-        <h3 className="text-base font-bold text-[#F7F9FA]">{SLIDES[slideIdx].title}</h3>
-        <p className="text-xs text-[#8A99A5] leading-relaxed">{SLIDES[slideIdx].desc}</p>
-      </div>
-
-      {/* Manual Indicator Dots */}
-      <div className="relative z-10 flex justify-center gap-1.5 pt-3">
-        {SLIDES.map((_, idx) => (
-          <button
-            key={idx}
-            type="button"
-            onClick={() => setSlideIdx(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              slideIdx === idx ? 'bg-[#00E5FF] w-4' : 'bg-[#1E262F] hover:bg-[#8A99A5]'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 export default function GatewayPortal({ setCurrentView }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -361,9 +291,78 @@ export default function GatewayPortal({ setCurrentView }) {
                 </div>
               </div>
 
-              {/* Hero Right Slideshow */}
-              <div className="lg:col-span-5 space-y-6">
-                <HeroSlideshow />
+              {/* Hero Right Visualizer */}
+              <div className="lg:col-span-5 bg-[#161B22]/60 border border-[#1E262F] rounded-2xl p-6 backdrop-blur-md shadow-2xl space-y-6 relative overflow-hidden flex flex-col justify-between h-[380px]">
+                <div className="absolute top-2 right-2 text-[8px] font-mono text-[#8A99A5]/30">DNA_LEDGER_VIZ</div>
+                
+                {/* Animated DNA Helix SVG Visualizer */}
+                <div className="flex-1 flex items-center justify-center w-full min-h-[180px]">
+                  <svg className="w-full h-full max-h-[200px]" viewBox="0 0 400 200">
+                    {Array.from({ length: 14 }).map((_, i) => {
+                      const angle = (i * Math.PI) / 6;
+                      return (
+                        <g key={i}>
+                          {/* Helix line 1 */}
+                          <motion.circle
+                            cx={45 + i * 24}
+                            cy={100}
+                            r="5"
+                            fill="#00E5FF"
+                            animate={{
+                              y: [Math.sin(angle) * 45, Math.sin(angle + Math.PI) * 45, Math.sin(angle) * 45]
+                            }}
+                            transition={{
+                              repeat: Infinity,
+                              duration: 3.5,
+                              ease: "easeInOut",
+                              delay: i * 0.08
+                            }}
+                            className="shadow-[0_0_10px_rgba(0,229,255,0.8)]"
+                          />
+                          {/* Connector line */}
+                          <motion.line
+                            x1={45 + i * 24}
+                            y1={100}
+                            x2={45 + i * 24}
+                            y2={100}
+                            stroke="#1E262F"
+                            strokeWidth="1.5"
+                            opacity="0.3"
+                            animate={{
+                              y1: [Math.sin(angle) * 45, Math.sin(angle + Math.PI) * 45, Math.sin(angle) * 45],
+                              y2: [Math.sin(angle + Math.PI) * 45, Math.sin(angle) * 45, Math.sin(angle + Math.PI) * 45]
+                            }}
+                            transition={{
+                              repeat: Infinity,
+                              duration: 3.5,
+                              ease: "easeInOut",
+                              delay: i * 0.08
+                            }}
+                          />
+                          {/* Helix line 2 */}
+                          <motion.circle
+                            cx={45 + i * 24}
+                            cy={100}
+                            r="5"
+                            fill="#FFD369"
+                            animate={{
+                              y: [Math.sin(angle + Math.PI) * 45, Math.sin(angle) * 45, Math.sin(angle + Math.PI) * 45]
+                            }}
+                            transition={{
+                              repeat: Infinity,
+                              duration: 3.5,
+                              ease: "easeInOut",
+                              delay: i * 0.08
+                            }}
+                            className="shadow-[0_0_10px_rgba(255,211,105,0.8)]"
+                          />
+                        </g>
+                      );
+                    })}
+                  </svg>
+                </div>
+
+                {/* Live streaming status terminal */}
                 <HeroLiveTerminal />
               </div>
               
