@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  History, Compass, MessageSquare, GitBranch, FileText, 
+  History as HistoryIcon, Compass, MessageSquare, GitBranch, FileText, 
   Terminal, AlertTriangle, Send
 } from 'lucide-react';
 import BrandLogo from './BrandLogo';
@@ -242,7 +242,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   : 'border-transparent text-[#8A99A5] hover:text-[#F7F9FA]'
               }`}
             >
-              <History className="w-4 h-4" />
+              <HistoryIcon className="w-4 h-4" />
               <span>Living Portfolio</span>
             </button>
 
