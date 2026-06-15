@@ -31,9 +31,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
       return;
     }
     setGitConnecting(true);
-    setGitStep('⚡ Connecting API gateway...');
+    setGitStep('⚡ Connecting to account...');
     setTimeout(() => {
-      setGitStep('🔍 Reading commit signature ledger...');
+      setGitStep('🔍 Analyzing your repositories...');
       setTimeout(() => {
         setGitStep('✓ Verified! Synced 125 commits.');
         setTimeout(() => {
@@ -51,9 +51,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
       return;
     }
     setRegistrarConnecting(true);
-    setRegistrarStep('⚡ Syncing university ledger...');
+    setRegistrarStep('⚡ Connecting to school database...');
     setTimeout(() => {
-      setRegistrarStep('🎓 Downloading academic telemetries...');
+      setRegistrarStep('🎓 Downloading course info...');
       setTimeout(() => {
         setRegistrarStep('✓ Verified! Synced CS-302 coursework.');
         setTimeout(() => {
@@ -83,7 +83,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
 
   const handleCandidateSubmit = () => {
     if (!gitConnected && !registrarConnected) {
-      setCandError('Please link at least one verified footprint registry (GitHub or Registrar API) to generate your living portfolio.');
+      setCandError('Please connect your GitHub or School Account to create your portfolio.');
       return;
     }
     setCandError('');
@@ -93,7 +93,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
   const handleEmployerSubmit = (e) => {
     e.preventDefault();
     if (!companyDomain) {
-      setEmpError('Please enter a company domain to establish telemetry.');
+      setEmpError('Please enter your company website domain.');
       return;
     }
     setEmpError('');
@@ -119,12 +119,12 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               onClick={handleQuickSeed}
               className="px-3 py-1.5 bg-[#FFD369]/10 hover:bg-[#FFD369]/20 text-[#FFD369] border border-[#FFD369]/30 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
             >
-              <span>⚡ Quick-Seed Demo Telemetry</span>
+              <span>⚡ Load Demo Data</span>
             </button>
             <div className="flex items-center gap-2 px-3 py-1 bg-[#1E262F] rounded-full border border-[#1E262F]">
               <span className="w-2 h-2 rounded-full bg-[#FFD369]" />
               <span className="text-[10px] text-[#FFD369] font-bold uppercase tracking-wider">
-                {selectedRole} Sync Mode
+                {selectedRole} Account Mode
               </span>
             </div>
           </div>
@@ -134,9 +134,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
         {selectedRole === 'candidate' && (
           <div className="space-y-6">
             <div className="space-y-2">
-              <h1 className="text-2xl font-bold text-[#F7F9FA]">Sync Verified Footprint</h1>
+              <h1 className="text-2xl font-bold text-[#F7F9FA]">Connect Your Accounts</h1>
               <p className="text-sm text-[#8A99A5]">
-                Link third-party ledgers to automatically build your immutable skills ledger. We bypass manual form entries to guarantee factual career integrity.
+                Connect your accounts to build a verified skills portfolio automatically. This bypasses manual forms and keeps your skills authentic.
               </p>
             </div>
 
@@ -164,13 +164,13 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                   )}
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-sm font-bold text-[#F7F9FA]">Connect GitHub Commit Stream</h3>
+                  <h3 className="text-sm font-bold text-[#F7F9FA]">Connect GitHub Account</h3>
                   {gitConnecting ? (
                     <p className="text-[10px] font-mono text-[#FFD369] animate-pulse">{gitStep}</p>
                   ) : gitConnected ? (
-                    <p className="text-[10px] font-mono text-[#00E5FF]">✓ Connected to Git Webhook</p>
+                    <p className="text-[10px] font-mono text-[#00E5FF]">✓ Connected to GitHub</p>
                   ) : (
-                    <p className="text-xs text-[#8A99A5]">Analyzes commits, PR logs, and architectural velocity.</p>
+                    <p className="text-xs text-[#8A99A5]">Import and verify your coding projects.</p>
                   )}
                 </div>
               </button>
@@ -198,13 +198,13 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                   )}
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-sm font-bold text-[#F7F9FA]">Connect Registrar Academic API</h3>
+                  <h3 className="text-sm font-bold text-[#F7F9FA]">Connect School Account</h3>
                   {registrarConnecting ? (
                     <p className="text-[10px] font-mono text-[#FFD369] animate-pulse">{registrarStep}</p>
                   ) : registrarConnected ? (
-                    <p className="text-[10px] font-mono text-[#00E5FF]">✓ Connected to Academic Registrar</p>
+                    <p className="text-[10px] font-mono text-[#00E5FF]">✓ Connected to University</p>
                   ) : (
-                    <p className="text-xs text-[#8A99A5]">Syncs verified university course telemetry and scores.</p>
+                    <p className="text-xs text-[#8A99A5]">Verify your courses, grades, and graduation status.</p>
                   )}
                 </div>
               </button>
@@ -215,9 +215,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               <div className="p-4 bg-[#0B0F12] border border-[#1E262F] rounded-xl flex gap-3 items-start">
                 <ShieldCheck className="w-5 h-5 text-[#00E5FF] flex-shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-[#F7F9FA]">Ready to Index Ledger</h4>
+                  <h4 className="text-xs font-bold text-[#F7F9FA]">Ready to Build Portfolio</h4>
                   <p className="text-[11px] text-[#8A99A5]">
-                    Data telemetry from {gitConnected && 'GitHub'} {gitConnected && registrarConnected && 'and'} {registrarConnected && 'Registrar API'} has been checked. We will generate the milestone index on completion.
+                    Data from {gitConnected && 'GitHub'} {gitConnected && registrarConnected && 'and'} {registrarConnected && 'School Account'} has been verified. You can now build your portfolio.
                   </p>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                 onClick={handleCandidateSubmit}
                 className="w-full py-4 bg-[#00E5FF] text-[#0B0F12] font-extrabold rounded-xl hover:bg-[#00E5FF]/90 transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,229,255,0.2)]"
               >
-                <span>Generate Living Portfolio</span>
+                <span>Create Portfolio</span>
               </button>
             </div>
           </div>
@@ -246,9 +246,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
         {selectedRole === 'employer' && (
           <form onSubmit={handleEmployerSubmit} className="space-y-6">
             <div className="space-y-2">
-              <h1 className="text-2xl font-bold text-[#F7F9FA]">Ecosystem Setup</h1>
+              <h1 className="text-2xl font-bold text-[#F7F9FA]">Recruiter Setup</h1>
               <p className="text-sm text-[#8A99A5]">
-                Configure your recruiter profile to monitor verified developer trajectories and language velocities.
+                Set up your recruiter profile to find candidates with verified programming skills.
               </p>
             </div>
 
@@ -256,7 +256,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               {/* Domain Input */}
               <div className="space-y-2">
                 <label className="block text-sm font-bold text-[#F7F9FA]">
-                  Company Corporate Domain
+                  Company Website
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#8A99A5]">
@@ -275,7 +275,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               {/* Trajectory Select */}
               <div className="space-y-2">
                 <label className="block text-sm font-bold text-[#F7F9FA]">
-                  Target Trajectory Focus
+                  Looking for Roles in
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#8A99A5]">
@@ -286,9 +286,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                     onChange={(e) => setTargetFocus(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 bg-[#0B0F12] border border-[#1E262F] rounded-lg text-[#F7F9FA] focus:border-[#00E5FF] focus:outline-none transition-colors text-sm appearance-none"
                   >
-                    <option value="mlops">MLOps Platform & Data Architecture</option>
-                    <option value="systems">Distributed Systems Engineering</option>
-                    <option value="fullstack">Enterprise Full-Stack Infrastructure</option>
+                    <option value="mlops">Data Engineering & MLOps</option>
+                    <option value="systems">Backend & Systems Engineering</option>
+                    <option value="fullstack">Full-Stack Development</option>
                   </select>
                 </div>
               </div>
@@ -296,7 +296,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               {/* Core Infra Stacks Select */}
               <div className="space-y-2">
                 <label className="block text-sm font-bold text-[#F7F9FA]">
-                  Core Infrastructure Stack
+                  Primary Tech Stack
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#8A99A5]">
@@ -307,9 +307,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                     onChange={(e) => setInfraStack(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 bg-[#0B0F12] border border-[#1E262F] rounded-lg text-[#F7F9FA] focus:border-[#00E5FF] focus:outline-none transition-colors text-sm appearance-none"
                   >
-                    <option value="kubernetes">Docker / Kubernetes / AWS Cloud</option>
-                    <option value="kafka">Apache Kafka / PgVector / Python</option>
-                    <option value="golang">Golang / Rust / WebAssembly Systems</option>
+                    <option value="kubernetes">Cloud Infrastructure (AWS, Docker, K8s)</option>
+                    <option value="kafka">Data & AI (Python, SQL, Kafka)</option>
+                    <option value="golang">Backend Languages (Go, Rust, C++)</option>
                   </select>
                 </div>
               </div>
@@ -327,7 +327,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                 type="submit"
                 className="w-full py-4 bg-[#00E5FF] text-[#0B0F12] font-extrabold rounded-xl hover:bg-[#00E5FF]/90 transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,229,255,0.2)]"
               >
-                <span>Launch Command Center</span>
+                <span>Go to Recruiter Dashboard</span>
               </button>
             </div>
           </form>
@@ -337,9 +337,9 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
         {selectedRole === 'university' && (
           <form onSubmit={handleUniversitySubmit} className="space-y-6">
             <div className="space-y-2">
-              <h1 className="text-2xl font-bold text-[#F7F9FA]">Authorize Telemetry Node</h1>
+              <h1 className="text-2xl font-bold text-[#F7F9FA]">Connect University Account</h1>
               <p className="text-sm text-[#8A99A5]">
-                Configure institutional parameters to analyze real-time cohort curriculum alignments with network job market demands.
+                Set up your university profile to check how your students' skills align with actual job market requirements.
               </p>
             </div>
 
@@ -347,13 +347,13 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               {/* Department Selection Grid */}
               <div>
                 <label className="block text-sm font-bold text-[#F7F9FA] mb-3">
-                  Academic Department Focus
+                  Department Focus
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {[
                     { id: 'cs', label: 'Computer Science', sub: 'Systems & Algorithms' },
-                    { id: 'ds', label: 'Data Science', sub: 'Machine Learning Pipelines' },
-                    { id: 'se', label: 'Software Eng.', sub: 'Enterprise App Architecture' },
+                    { id: 'ds', label: 'Data Science', sub: 'Machine Learning & AI' },
+                    { id: 'se', label: 'Software Eng.', sub: 'Web & Mobile Apps' },
                   ].map((dept) => (
                     <button
                       key={dept.id}
@@ -376,7 +376,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
               {/* Graduation Batch Selection */}
               <div>
                 <label className="block text-sm font-bold text-[#F7F9FA] mb-3">
-                  Active Graduating Cohort
+                  Graduating Class
                 </label>
                 <div className="grid grid-cols-3 gap-3">
                   {[
@@ -409,7 +409,7 @@ export default function Onboarding({ selectedRole, setCurrentView, setUniversity
                 type="submit"
                 className="w-full py-4 bg-[#00E5FF] text-[#0B0F12] font-extrabold rounded-xl hover:bg-[#00E5FF]/90 transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,229,255,0.2)]"
               >
-                <span>Open Telemetry View</span>
+                <span>Go to University Console</span>
               </button>
             </div>
           </form>

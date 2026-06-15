@@ -11,29 +11,29 @@ const MOCK_CANDIDATES = [
   {
     id: 'c-1',
     initials: 'KD',
-    name: 'Key.Dev #482',
-    summary: 'Candidate is actively scaling out of basic academic scripts into enterprise full-stack distributed database architecture. High code velocity indexed.',
-    intent: 'MLOps & Pipeline Systems',
-    tags: ['FastAPI', 'Python', 'PgVector', 'Docker'],
-    velocity: 'High Velocity (14 commits/week)'
+    name: 'Candidate #482',
+    summary: 'Candidate builds full-stack web applications and backend databases. Consistent project updates.',
+    intent: 'Data Engineering & Pipelines',
+    tags: ['FastAPI', 'Python', 'Databases', 'Docker'],
+    velocity: 'Very Active (14 updates/week)'
   },
   {
     id: 'c-2',
     initials: 'NS',
-    name: 'Net.Socket #119',
-    summary: 'Candidate has demonstrated heavy low-level network performance capabilities and multi-threaded partition controls. Solid infrastructure logic.',
+    name: 'Candidate #119',
+    summary: 'Candidate has experience in network programming and multi-threaded applications. Solid backend skills.',
     intent: 'Distributed Systems',
     tags: ['Golang', 'Docker', 'Postgres', 'Linux'],
-    velocity: 'Consistent (8 commits/week)'
+    velocity: 'Consistent (8 updates/week)'
   },
   {
     id: 'c-3',
     initials: 'CO',
-    name: 'Comp.Ops #903',
-    summary: 'Candidate shows strong compiler optimization foundations but has active skill gaps in deployment caching layers. Actively patching distributed consensus.',
+    name: 'Candidate #903',
+    summary: 'Candidate has strong fundamentals in low-level systems programming. Currently learning website caching and cloud hosting.',
     intent: 'Systems Infrastructure',
     tags: ['Rust', 'WebAssembly', 'Kubernetes', 'AWS'],
-    velocity: 'High Velocity (21 commits/week)'
+    velocity: 'Very Active (21 updates/week)'
   }
 ];
 
@@ -41,32 +41,32 @@ const MOCK_CANDIDATES = [
 const MOCK_POSTINGS = [
   {
     id: 'p-1',
-    role: 'MLOps Platform Architect',
+    role: 'Data & AI Engineer',
     applicants: 4,
-    status: 'Active Ingesting',
-    stack: 'FastAPI, PgVector, Kafka'
+    status: 'Active',
+    stack: 'FastAPI, Databases, Kafka'
   },
   {
     id: 'p-2',
     role: 'Junior Infrastructure Analyst',
     applicants: 7,
-    status: 'Active Ingesting',
+    status: 'Active',
     stack: 'Docker, Bash, AWS'
   },
   {
     id: 'p-3',
-    role: 'Systems Engineering Lead',
+    role: 'Backend Systems Lead',
     applicants: 2,
-    status: 'Paused Ingesting',
+    status: 'Paused',
     stack: 'Golang, WebAssembly, Rust'
   }
 ];
 
 // Mock Signal Feed Data
 const MOCK_SIGNALS = [
-  "🟢 [Signal Ingest] User 'dev_block_0x4f' just synced a verified FastAPI milestone ledger...",
-  "🟢 [Registry Sync] University Registrar updated graduation registry metadata for 2026 Cohort...",
-  "🟢 [Telemetry Stream] Cryptographic audit trail generated for Junior Infrastructure Analyst path..."
+  "🟢 [System Update] Candidate 'dev_user_92' updated their FastAPI project...",
+  "🟢 [System Update] University verified the graduation status for graduating students...",
+  "🟢 [System Update] Skills verified for Junior Infrastructure Analyst path..."
 ];
 
 export default function EmployerDashboard({ setCurrentView }) {
@@ -123,7 +123,7 @@ export default function EmployerDashboard({ setCurrentView }) {
     }
     if (selectedTrajectory !== 'all') {
       // Allow slight match
-      if (selectedTrajectory === 'mlops' && !candidate.intent.includes('MLOps')) return false;
+      if (selectedTrajectory === 'mlops' && !candidate.intent.includes('Data')) return false;
       if (selectedTrajectory === 'systems' && !candidate.intent.includes('Distributed')) return false;
       if (selectedTrajectory === 'infra' && !candidate.intent.includes('Infrastructure')) return false;
     }
@@ -147,6 +147,7 @@ export default function EmployerDashboard({ setCurrentView }) {
           {/* Tab Controller Links */}
           <div className="flex gap-4">
             <button
+              type="button"
               onClick={() => setEmpTab('discovery')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 empTab === 'discovery'
@@ -154,9 +155,10 @@ export default function EmployerDashboard({ setCurrentView }) {
                   : 'text-[#8A99A5] hover:text-[#F7F9FA]'
               }`}
             >
-              Talent Discovery
+              Find Candidates
             </button>
             <button
+              type="button"
               onClick={() => setEmpTab('postings')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 empTab === 'postings'
@@ -164,20 +166,20 @@ export default function EmployerDashboard({ setCurrentView }) {
                   : 'text-[#8A99A5] hover:text-[#F7F9FA]'
               }`}
             >
-              Active Postings Tracker
+              Manage Postings
             </button>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
           <span className="text-[10px] font-mono text-[#8A99A5] bg-[#0B0F12] px-3 py-1 rounded border border-[#1E262F]">
-            Node: Recruiter Command Center
+            Recruiter Dashboard
           </span>
           <button
             onClick={() => setCurrentView('gateway')}
             className="px-4 py-2 bg-[#1E262F] hover:bg-[#FF5252] text-[#8A99A5] hover:text-[#F7F9FA] font-bold rounded-lg text-xs transition-all"
           >
-            Exit Console
+            Exit Dashboard
           </button>
         </div>
       </header>
@@ -189,19 +191,19 @@ export default function EmployerDashboard({ setCurrentView }) {
         <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#161B22] to-[#1E262F]/40 shadow-lg">
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Workspace Token: Vektor-Ops-Command-Central</h1>
+              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Account: Vektor-Ops-Recruiting</h1>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/20 text-[9px] font-mono font-bold uppercase">
                 <span className="w-1 h-1 rounded-full bg-[#00E5FF] animate-pulse" />
-                Telemetry Ingesting
+                System Synced
               </span>
             </div>
             <p className="text-xs text-[#8A99A5]">
-              Monitoring verified language competencies for <span className="text-[#00E5FF]">MLOps Pipelines</span> and <span className="text-[#FFD369]">Distributed Systems</span>
+              Looking for skills in <span className="text-[#00E5FF]">Data Engineering</span> and <span className="text-[#FFD369]">Backend Systems</span>
             </p>
           </div>
           <div className="bg-[#0B0F12] border border-[#1E262F] px-4 py-2.5 rounded-lg text-right font-mono text-[10px] text-[#8A99A5] flex flex-col gap-0.5 font-semibold">
-            <div><span className="text-[#8A99A5]/60">PIPELINES INSTANTIATED:</span> <span className="text-[#FFD369]">3 Active Listings</span></div>
-            <div><span className="text-[#8A99A5]/60">SANDBOX HOST:</span> <span className="text-[#00E5FF]">aws-us-east-2.dna.sh</span></div>
+            <div><span className="text-[#8A99A5]/60">ACTIVE POSTINGS:</span> <span className="text-[#FFD369]">3 Active Listings</span></div>
+            <div><span className="text-[#8A99A5]/60">SERVER REGION:</span> <span className="text-[#00E5FF]">US East (AWS)</span></div>
           </div>
         </div>
 
@@ -219,15 +221,15 @@ export default function EmployerDashboard({ setCurrentView }) {
               {/* Trajectory filter */}
               <div className="space-y-2">
                 <label className="block text-[11px] font-bold uppercase text-[#8A99A5] font-mono">
-                  Trajectory Intent
+                  Target Role
                 </label>
                 <select
                   value={selectedTrajectory}
                   onChange={(e) => setSelectedTrajectory(e.target.value)}
                   className="w-full bg-[#0B0F12] border border-[#1E262F] rounded px-3 py-2 text-xs text-[#F7F9FA] focus:border-[#00E5FF] focus:outline-none"
                 >
-                  <option value="all">All Trajectories</option>
-                  <option value="mlops">MLOps & Pipelines</option>
+                  <option value="all">All Roles</option>
+                  <option value="mlops">Data Engineering</option>
                   <option value="systems">Distributed Systems</option>
                 </select>
               </div>
@@ -235,7 +237,7 @@ export default function EmployerDashboard({ setCurrentView }) {
               {/* Language filter */}
               <div className="space-y-2">
                 <label className="block text-[11px] font-bold uppercase text-[#8A99A5] font-mono">
-                  Verified Language
+                  Programming Language
                 </label>
                 <select
                   value={selectedLanguage}
@@ -252,16 +254,16 @@ export default function EmployerDashboard({ setCurrentView }) {
               {/* Code Velocity Filter */}
               <div className="space-y-2">
                 <label className="block text-[11px] font-bold uppercase text-[#8A99A5] font-mono">
-                  Velocity Ratio
+                  Activity Level
                 </label>
                 <select
                   value={selectedVelocity}
                   onChange={(e) => setSelectedVelocity(e.target.value)}
                   className="w-full bg-[#0B0F12] border border-[#1E262F] rounded px-3 py-2 text-xs text-[#F7F9FA] focus:border-[#00E5FF] focus:outline-none"
                 >
-                  <option value="all">All Velocities</option>
-                  <option value="high">High Velocity (&gt; 10 commits)</option>
-                  <option value="consistent">Consistent (&gt; 5 commits)</option>
+                  <option value="all">All Activity Levels</option>
+                  <option value="high">Very Active (&gt; 10 updates/week)</option>
+                  <option value="consistent">Consistent (&gt; 5 updates/week)</option>
                 </select>
               </div>
             </div>
@@ -270,7 +272,7 @@ export default function EmployerDashboard({ setCurrentView }) {
             <div className="lg:col-span-3 space-y-6">
               <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                 <h2 className="text-lg font-bold border-l-4 border-[#00E5FF] pl-3">
-                  Verified Candidates Telemetry Feed
+                  Verified Candidates Feed
                 </h2>
                 <span className="text-xs text-[#8A99A5] font-mono">
                   {filteredCandidates.length} matches found
@@ -286,7 +288,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                   type="text"
                   value={candidateSearchQuery}
                   onChange={(e) => setCandidateSearchQuery(e.target.value)}
-                  placeholder="Search candidate names, tags, or description parameters..."
+                  placeholder="Search candidate names, skills, or tags..."
                   className="w-full pl-10 pr-4 py-2.5 bg-[#0C1014] border border-[#1E262F] rounded-xl text-[#F7F9FA] placeholder-[#8A99A5]/40 focus:border-[#00E5FF] focus:outline-none transition-all text-xs"
                 />
               </div>
@@ -347,12 +349,12 @@ export default function EmployerDashboard({ setCurrentView }) {
                             {isInvited ? (
                               <>
                                 <Check className="w-4 h-4" />
-                                <span>Pipeline Streamed</span>
+                                <span>Invited</span>
                               </>
                             ) : (
                               <>
                                 <Send className="w-4 h-4" />
-                                <span>Invite to Workspace Pipeline</span>
+                                <span>Invite to Interview</span>
                               </>
                             )}
                           </button>
@@ -363,8 +365,8 @@ export default function EmployerDashboard({ setCurrentView }) {
                 ) : (
                   <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-12 text-center space-y-2">
                     <Layers className="w-8 h-8 text-[#FF5252] mx-auto opacity-60" />
-                    <h4 className="text-sm font-bold text-[#F7F9FA]">No Ledger Matches Found</h4>
-                    <p className="text-xs text-[#8A99A5]">Try clearing telemetry filters to expand candidate scans.</p>
+                    <h4 className="text-sm font-bold text-[#F7F9FA]">No Candidates Found</h4>
+                    <p className="text-xs text-[#8A99A5]">Try clearing filters to expand your search.</p>
                   </div>
                 )}
               </div>
@@ -378,17 +380,17 @@ export default function EmployerDashboard({ setCurrentView }) {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-bold border-l-4 border-[#00E5FF] pl-3">
-                Active Listings Telemetry Status
+                Job Postings Status
               </h2>
               <span className="text-xs text-[#8A99A5] font-mono">
-                Monitoring 3 pipeline streams
+                3 active listings
               </span>
             </div>
 
             {/* Feature 1: Real-Time Live Signal Ticker */}
             <div className="bg-[#11161B]/60 backdrop-blur-md border border-[#30363D] rounded-xl p-4 overflow-hidden h-14 flex items-center shadow-lg relative my-4">
               <div className="absolute left-4 z-10 bg-[#11161B] pr-2 flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-[#FFD369] font-mono select-none">
-                <span>SIGNAL FEED</span>
+                <span>LIVE ACTIVITY</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
               </div>
               <div className="w-full pl-28 relative h-6 overflow-hidden flex items-center">
@@ -413,9 +415,9 @@ export default function EmployerDashboard({ setCurrentView }) {
                 <thead>
                   <tr className="bg-[#0B0F12]/40 border-b border-[#1E262F] text-[#8A99A5] font-bold font-mono">
                     <th className="p-4 uppercase tracking-wider">Position Title</th>
-                    <th className="p-4 uppercase tracking-wider">Mandated Stack</th>
-                    <th className="p-4 uppercase tracking-wider">Telemetry State</th>
-                    <th className="p-4 uppercase tracking-wider">Synced Candidates</th>
+                    <th className="p-4 uppercase tracking-wider">Required Tech Stack</th>
+                    <th className="p-4 uppercase tracking-wider">Status</th>
+                    <th className="p-4 uppercase tracking-wider">Candidates</th>
                     <th className="p-4 uppercase tracking-wider text-right">Actions</th>
                   </tr>
                 </thead>
@@ -449,7 +451,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                       {/* Applicant badge */}
                       <td className="p-4">
                         <span className="font-bold text-[#FFD369] bg-[#FFD369]/10 px-2.5 py-1 rounded-full border border-[#FFD369]/20 font-mono text-[10px]">
-                          {post.applicants} Synced Ledgers
+                          {post.applicants} Applicants
                         </span>
                       </td>
 
@@ -459,7 +461,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                           onClick={() => setAuditTrailJob(post)}
                           className="px-3 py-1.5 bg-[#1E262F] hover:bg-[#00E5FF] hover:text-[#0B0F12] text-[#8A99A5] font-bold rounded transition-all text-[11px]"
                         >
-                          Inspect Telemetry Streams
+                          Inspect Verification
                         </button>
                       </td>
                     </tr>
@@ -498,24 +500,24 @@ export default function EmployerDashboard({ setCurrentView }) {
                   <Terminal className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-[#F7F9FA]">Workspace Invitation Active</h3>
-                  <p className="text-[11px] text-[#8A99A5]">Recruitment telemetry pipeline established.</p>
+                  <h3 className="text-sm font-bold text-[#F7F9FA]">Send Interview Invitation</h3>
+                  <p className="text-[11px] text-[#8A99A5]">Interview workspace details.</p>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <p className="text-xs text-[#8A99A5] leading-relaxed">
-                  The candidate's ledger stream has been synced. To evaluate their capabilities in a secure container sandbox, provision their telemetry runtime environment.
+                  The candidate's profile is verified. You can launch a private environment to run their projects and view their skills.
                 </p>
                 <div className="bg-[#0B0F12] p-3 rounded-lg border border-[#1E262F] font-mono text-[10px] text-[#8A99A5] space-y-1">
                   <div className="flex justify-between">
-                    <span>Target Node:</span>
-                    <span className="text-[#F7F9FA]">aws-us-east-2.dna.sh</span>
+                    <span>Private Server:</span>
+                    <span className="text-[#F7F9FA]">US East (AWS)</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Status:</span>
                     <span className="text-[#FFD369]">
-                      {provisioningStatus === 'completed' ? 'Telemetry Online' : 'Awaiting Provisioning'}
+                      {provisioningStatus === 'completed' ? 'Server Online' : 'Awaiting Server Launch'}
                     </span>
                   </div>
                 </div>
@@ -523,18 +525,18 @@ export default function EmployerDashboard({ setCurrentView }) {
                 {/* Docker Sandbox Telemetry Terminal */}
                 {provisioningStatus !== 'idle' && (
                   <div className="bg-[#0B0F12] border border-[#1E262F] rounded p-3 font-mono text-[10px] text-[#8A99A5] space-y-1 h-32 overflow-y-auto">
-                    <div className="text-[#00E5FF] font-semibold">&gt; [10:06:01] CONTAINER: Initializing sandbox context...</div>
+                    <div className="text-[#00E5FF] font-semibold">&gt; [10:06:01] CONTAINER: Initializing environment...</div>
                     {provisioningStatus === 'provisioning' ? (
                       <>
-                        <div className="animate-pulse">&gt; [10:06:02] DOCKER: Pulling vector-runtime-env:latest...</div>
-                        <div className="text-[#8A99A5]/40">&gt; [10:06:02] DOCKER: Layer extraction...</div>
+                        <div className="animate-pulse">&gt; [10:06:02] SERVER: Pulling runtime environment...</div>
+                        <div className="text-[#8A99A5]/40">&gt; [10:06:02] SERVER: Loading files...</div>
                       </>
                     ) : (
                       <>
-                        <div>&gt; [10:06:02] DOCKER: Pulling vector-runtime-env:latest... Complete.</div>
-                        <div>&gt; [10:06:02] DOCKER: Spawning isolated sandbox environment...</div>
-                        <div className="text-emerald-500 font-semibold">&gt; [10:06:03] CONTAINER: Listening on port 8080. Sandbox online.</div>
-                        <div className="text-[#FFD369] font-semibold">&gt; [10:06:03] TELEMETRY: Streaming candidate ledger data... Connected.</div>
+                        <div>&gt; [10:06:02] SERVER: Loading completed.</div>
+                        <div>&gt; [10:06:02] SERVER: Spawning secure test server...</div>
+                        <div className="text-emerald-500 font-semibold">&gt; [10:06:03] SERVER: Environment online on port 8080.</div>
+                        <div className="text-[#FFD369] font-semibold">&gt; [10:06:03] SERVER: Candidate project files connected.</div>
                       </>
                     )}
                   </div>
@@ -546,7 +548,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                   onClick={handleCloseModal}
                   className="flex-1 py-2.5 bg-[#1E262F] hover:bg-[#1E262F]/80 text-[#8A99A5] font-bold rounded-xl text-xs transition-all border border-[#1E262F]"
                 >
-                  Configure Later
+                  Cancel
                 </button>
                 
                 <button
@@ -560,7 +562,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                   className="flex-1 py-2.5 bg-[#00E5FF] text-[#0B0F12] disabled:bg-[#FFD369]/10 disabled:text-[#FFD369] font-extrabold rounded-xl text-xs transition-all shadow-[0_0_15px_rgba(0,229,255,0.15)] flex items-center justify-center gap-1.5"
                 >
                   {provisioningStatus === 'idle' && (
-                    <span>Provision Telemetry Sandbox Environment</span>
+                    <span>Launch Test Environment</span>
                   )}
                   {provisioningStatus === 'provisioning' && (
                     <>
@@ -575,7 +577,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                   {provisioningStatus === 'completed' && (
                     <>
                       <Check className="w-3.5 h-3.5" />
-                      <span>Sandbox Ready</span>
+                      <span>Server Ready</span>
                     </>
                   )}
                 </button>
@@ -589,7 +591,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                 >
                   <ShieldCheck className="w-4 h-4 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold">Success:</span> Container online. Sync logs via remote bash endpoint inside recruiter credentials console.
+                    <span className="font-bold">Success:</span> Server is ready. You can now test the candidate's projects.
                   </div>
                 </motion.div>
               )}
@@ -626,7 +628,7 @@ export default function EmployerDashboard({ setCurrentView }) {
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#F7F9FA]">Verified Ledger Audit Trail</h3>
+                    <h3 className="text-sm font-bold text-[#F7F9FA]">Verified Skills Record</h3>
                     <p className="text-[11px] text-[#8A99A5] font-mono">{auditTrailJob.role}</p>
                   </div>
                 </div>
@@ -649,7 +651,7 @@ export default function EmployerDashboard({ setCurrentView }) {
               {/* Code payload container */}
               <div className="space-y-3">
                 <p className="text-xs text-[#8A99A5] leading-relaxed">
-                  Cryptographic ledger proof of applicant capabilities synced from public registrar nodes:
+                  Verified skills record of the candidate synced from university and project databases:
                 </p>
                 <div className="bg-[#0B0F12] p-5 rounded-xl border border-[#1E262F] font-mono text-xs text-[#F7F9FA] space-y-2 overflow-x-auto select-all shadow-inner relative">
                   <button
@@ -667,13 +669,13 @@ PAYLOAD: {
                   >
                     {isCopied ? "✓ COPIED" : "COPY BLOCK"}
                   </button>
-                  <div>[BLOCK #9,412] AUTHORIZED BY: CENTRAL REGISTRAR NETWORK</div>
+                  <div>[VERIFIED BLOCK #9,412] SIGNED BY: VERIFICATION SYSTEM</div>
                   <div>TIMESTAMP: 2026-06-14Z04:47:00</div>
                   <div>HASH: 8f2d93e1a8b3c4d5e6f7g8h9i0j2k1l3m4n5o6p7c2b</div>
                   <div className="text-[#8A99A5] mt-2">PAYLOAD: &#123;</div>
                   <div className="pl-4 text-[#00E5FF]">&nbsp;&nbsp;milestone: "Advanced Distributed Systems Lab",</div>
-                  <div className="pl-4 text-[#FFD369]">&nbsp;&nbsp;validation_source: "GitHub Actions + Registrar API",</div>
-                  <div className="pl-4 text-[#10B981]">&nbsp;&nbsp;status: "IMMUTABLE_INTEGRITY_VERIFIED"</div>
+                  <div className="pl-4 text-[#FFD369]">&nbsp;&nbsp;verification_source: "GitHub + University Database",</div>
+                  <div className="pl-4 text-[#10B981]">&nbsp;&nbsp;status: "SKILL_VERIFIED_AND_CONFIRMED"</div>
                   <div className="text-[#8A99A5]">&#125;</div>
                 </div>
               </div>
@@ -683,7 +685,7 @@ PAYLOAD: {
                   onClick={() => setAuditTrailJob(null)}
                   className="px-5 py-2.5 bg-[#1E262F] hover:bg-[#1E262F]/80 text-[#8A99A5] hover:text-[#F7F9FA] font-bold rounded-xl text-xs transition-colors border border-[#1E262F]"
                 >
-                  Close Audit Inspector
+                  Close Verification View
                 </button>
               </div>
             </motion.div>

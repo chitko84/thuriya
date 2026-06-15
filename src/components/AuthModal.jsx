@@ -12,11 +12,11 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('Please fill in all security fields.');
+      setError('Please fill in all fields.');
       return;
     }
     if (!selectedRole) {
-      setError('Please select an ecosystem workspace role to proceed.');
+      setError('Please select a role to proceed.');
       return;
     }
     setError('');
@@ -75,7 +75,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
           {/* Quick Demo Access Credentials */}
           <div className="mb-6 bg-[#0B0F12]/50 border border-[#1E262F] p-4 rounded-xl space-y-2.5">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFD369] block">
-              ⚡ Quick-Seed Demo Access Pass:
+              ⚡ Quick Demo Access:
             </span>
             <div className="flex flex-wrap gap-2">
               <button
@@ -121,7 +121,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
             {/* Role-Selection Array */}
             <div>
               <label className="block text-sm font-bold text-[#F7F9FA] mb-3">
-                Select Ecosystem Workspace Role <span className="text-[#FF5252]">*</span>
+                Choose Your Role <span className="text-[#FF5252]">*</span>
               </label>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -141,7 +141,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                   <User className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'candidate' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
                   <div className="flex flex-col md:items-center">
                     <span className="text-xs font-bold text-[#F7F9FA] block">Candidate</span>
-                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Student / Dev Portfolio</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Student / Job Seeker</span>
                   </div>
                 </button>
 
@@ -161,7 +161,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                   <Briefcase className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'employer' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
                   <div className="flex flex-col md:items-center">
                     <span className="text-xs font-bold text-[#F7F9FA] block">Recruiter</span>
-                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Talent Discovery Command</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Hire and Build Teams</span>
                   </div>
                 </button>
 
@@ -181,7 +181,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                   <GraduationCap className={`w-6 h-6 md:mb-2 flex-shrink-0 ${selectedRole === 'university' ? 'text-[#00E5FF]' : 'text-[#8A99A5]'}`} />
                   <div className="flex flex-col md:items-center">
                     <span className="text-xs font-bold text-[#F7F9FA] block">University</span>
-                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Academic Console Telemetry</span>
+                    <span className="text-[10px] text-[#8A99A5] mt-0.5 md:mt-1 leading-tight">Issue & Verify Skills</span>
                   </div>
                 </button>
               </div>
@@ -190,7 +190,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
             {/* Email Input */}
             <div className="space-y-2">
               <label className="block text-sm font-bold text-[#F7F9FA]">
-                Workspace Credentials Email
+                Email Address
               </label>
               <div className="relative">
                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#8A99A5]">
@@ -200,7 +200,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g. key.developer@careerdna.io"
+                  placeholder="e.g. name@example.com"
                   className="w-full pl-10 pr-4 py-3 bg-[#0B0F12] border border-[#1E262F] rounded-lg text-[#F7F9FA] placeholder-[#8A99A5]/60 focus:border-[#00E5FF] focus:outline-none transition-colors"
                 />
               </div>
@@ -209,7 +209,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
             {/* Password Input */}
             <div className="space-y-2">
               <label className="block text-sm font-bold text-[#F7F9FA]">
-                Secure Credentials Passcode
+                Password
               </label>
               <div className="relative">
                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#8A99A5]">
@@ -238,7 +238,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
               type="submit"
               className="w-full py-4 px-6 bg-[#00E5FF] text-[#0B0F12] font-bold rounded-xl hover:bg-[#00E5FF]/90 transition-all shadow-[0_4px_20px_rgba(0,229,255,0.2)] flex items-center justify-center gap-2 group"
             >
-              <span>Initialize Secure Workspace</span>
+              <span>Get Started</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
@@ -247,7 +247,7 @@ export default function AuthModal({ setCurrentView, selectedRole, setSelectedRol
         {/* Footer Trajectory Info */}
         <div className="p-4 bg-[#0B0F12] border-t border-[#1E262F] text-center">
           <p className="text-[10px] text-[#8A99A5]">
-            CareerDNA utilizes cryptographic evidence pipelines. Zero black-box ranking algorithms.
+            CareerDNA helps you build a verified skills portfolio. No biased ranking algorithms.
           </p>
         </div>
       </motion.div>

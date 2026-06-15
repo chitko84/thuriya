@@ -6,22 +6,22 @@ import BrandLogo from './BrandLogo';
 const DEPT_COMPARATOR_DATA = {
   cs: [
     {
-      track: 'MLOps Pipelines',
+      track: 'Data Engineering',
       competency: 62,
       demand: 88,
-      desc: 'High demand on data scaling; low cohort exposure to partition streams.'
+      desc: 'High demand for data pipelines; students need more training on real-time data.'
     },
     {
       track: 'Distributed Systems',
       competency: 78,
       demand: 82,
-      desc: 'Reasonable balance on concurrency concepts; minor gaps in socket level libraries.'
+      desc: 'Reasonable balance on concurrency concepts; minor gaps in low-level network libraries.'
     },
     {
       track: 'Full-Stack Apps',
       competency: 48,
       demand: 94,
-      desc: 'High recruiter requests for Server Components; coursework relies on legacy scripts.'
+      desc: 'High recruiter demand for modern frameworks; coursework relies on legacy scripts.'
     }
   ],
   ds: [
@@ -29,19 +29,19 @@ const DEPT_COMPARATOR_DATA = {
       track: 'ML Pipelines',
       competency: 55,
       demand: 90,
-      desc: 'Cohort strong in PyTorch modeling; weak in pipeline containerization & automation.'
+      desc: 'Students are strong in AI modeling; weak in pipeline deployment and automation.'
     },
     {
       track: 'Data Ingestion',
       competency: 82,
       demand: 75,
-      desc: 'Excellent SQL/ETL foundation; minor gaps in real-time streaming tools like Kafka.'
+      desc: 'Excellent SQL foundation; minor gaps in real-time streaming tools like Kafka.'
     },
     {
       track: 'Statistical Math',
       competency: 90,
       demand: 85,
-      desc: 'Solid theoretical algebra; missing hands-on training with distributed pandas.'
+      desc: 'Solid theoretical math; needs more hands-on training with large data tools.'
     }
   ],
   se: [
@@ -49,19 +49,19 @@ const DEPT_COMPARATOR_DATA = {
       track: 'Cloud Design',
       competency: 68,
       demand: 85,
-      desc: 'Good standard hosting coverage; minor gaps in serverless design patterns.'
+      desc: 'Good cloud hosting coverage; minor gaps in serverless architecture.'
     },
     {
       track: 'Enterprise APIs',
       competency: 80,
       demand: 82,
-      desc: 'Strong REST API practices; missing modern gRPC and GraphQL implementations.'
+      desc: 'Strong API practices; needs modern GraphQL implementations.'
     },
     {
       track: 'CI/CD Pipelines',
       competency: 40,
       demand: 92,
-      desc: 'Curriculum lacks hands-on automated deployment and integration loops.'
+      desc: 'Curriculum lacks hands-on automated deployment and testing.'
     }
   ]
 };
@@ -71,48 +71,48 @@ const DEPT_WARNINGS = {
   cs: [
     {
       id: 'w-1',
-      severity: 'CRITICAL DRIFT',
+      severity: 'CRITICAL GAP',
       warning: '85% of active tech roles require server-side caching components.',
-      reco: 'Update Computer Science CS-302 Node parameters to teach edge network protocols.',
+      reco: 'Update CS-302 course to teach caching and edge networks.',
       status: 'pending'
     },
     {
       id: 'w-2',
-      severity: 'MODERATE DRIFT',
-      warning: 'Recruiters report Python candidates miss Kafka clustering knowledge.',
-      reco: 'Introduce streaming architecture models inside Data Science Module DS-204.',
+      severity: 'MODERATE GAP',
+      warning: 'Recruiters report candidates need more real-time messaging skills (Kafka).',
+      reco: 'Introduce data streaming in Data Science course DS-204.',
       status: 'pending'
     }
   ],
   ds: [
     {
       id: 'w-1',
-      severity: 'CRITICAL DRIFT',
+      severity: 'CRITICAL GAP',
       warning: '92% of Machine Learning jobs require Docker orchestration knowledge.',
-      reco: 'Add container deployment labs to Advanced Analytics DS-402.',
+      reco: 'Add container labs to Advanced Analytics course DS-402.',
       status: 'pending'
     },
     {
       id: 'w-2',
-      severity: 'MODERATE DRIFT',
+      severity: 'MODERATE GAP',
       warning: 'Data teams demand experience with Snowflake or Databricks lakehouses.',
-      reco: 'Include modern lakehouse query projects inside Data Science DS-208.',
+      reco: 'Include cloud database projects in Data Science course DS-208.',
       status: 'pending'
     }
   ],
   se: [
     {
       id: 'w-1',
-      severity: 'CRITICAL DRIFT',
+      severity: 'CRITICAL GAP',
       warning: '88% of enterprise engineering teams use automated CI/CD pipelines.',
-      reco: 'Add automation pipeline projects to SE-304 Software Lifecycle.',
+      reco: 'Add automation projects to SE-304 Software Lifecycle.',
       status: 'pending'
     },
     {
       id: 'w-2',
-      severity: 'MODERATE DRIFT',
+      severity: 'MODERATE GAP',
       warning: 'Companies seek candidates with microservices orchestration using Kubernetes.',
-      reco: 'Introduce container systems telemetry inside SE-310.',
+      reco: 'Introduce container systems in SE-310.',
       status: 'pending'
     }
   ]
@@ -133,22 +133,22 @@ const COHORT_SIZES = {
 // Sandbox upgrades lookup per department
 const SANDBOX_UPGRADES_BY_DEPT = {
   cs: [
-    { id: 'kafka', label: 'Kafka Stream Sync', target: 'MLOps Pipelines', desc: 'Introduces real-time stream ingestion coursework.' },
-    { id: 'docker', label: 'Docker Environment', target: 'MLOps Pipelines', desc: 'Adds local container build and registry telemetry.' },
-    { id: 'redis', label: 'Redis Cache Layer', target: 'Distributed Systems', desc: 'Integrates key-value storage and cache eviction labs.' },
-    { id: 'nextjs', label: 'Next.js Server Actions', target: 'Full-Stack Apps', desc: 'Updates coursework to modern React architectures.' }
+    { id: 'kafka', label: 'Kafka Streaming', target: 'Data Engineering', desc: 'Introduces real-time stream ingestion coursework.' },
+    { id: 'docker', label: 'Docker Containers', target: 'Data Engineering', desc: 'Adds container build and deployment exercises.' },
+    { id: 'redis', label: 'Redis Caching', target: 'Distributed Systems', desc: 'Integrates database caching labs.' },
+    { id: 'nextjs', label: 'Next.js Framework', target: 'Full-Stack Apps', desc: 'Updates web course to modern React frameworks.' }
   ],
   ds: [
-    { id: 'pytorch', label: 'PyTorch DevOps Stack', target: 'ML Pipelines', desc: 'Integrates model deployment pipeline automation.' },
-    { id: 'k8s', label: 'Kubernetes ML Engine', target: 'ML Pipelines', desc: 'Teaches model hosting on scaled cluster nodes.' },
-    { id: 'kafka', label: 'Kafka Data Sync', target: 'Data Ingestion', desc: 'Connects data lakes to direct live stream feeds.' },
+    { id: 'pytorch', label: 'PyTorch AI Deployment', target: 'ML Pipelines', desc: 'Integrates model deployment pipeline automation.' },
+    { id: 'k8s', label: 'Cloud Machine Learning', target: 'ML Pipelines', desc: 'Teaches model hosting on scaled cluster nodes.' },
+    { id: 'kafka', label: 'Kafka Data Streams', target: 'Data Ingestion', desc: 'Connects data lakes to direct live stream feeds.' },
     { id: 'pandas', label: 'Distributed Pandas', target: 'Statistical Math', desc: 'Transitions math tools from single thread to cluster compute.' }
   ],
   se: [
     { id: 'aws', label: 'Serverless AWS Stack', target: 'Cloud Design', desc: 'Leverages Lambda and API Gateways in coursework.' },
     { id: 'k8s', label: 'Kubernetes Orchestrator', target: 'Cloud Design', desc: 'Teaches automated cluster deployments and auto-scaling.' },
-    { id: 'grpc', label: 'gRPC Protobuf Engine', target: 'Enterprise APIs', desc: 'Implements binary serialization protocols for microservices.' },
-    { id: 'github', label: 'GitHub Actions CI/CD', target: 'CI/CD Pipelines', desc: 'Establishes continuous verification checks for student repositories.' }
+    { id: 'grpc', label: 'gRPC API Services', target: 'Enterprise APIs', desc: 'Implements binary serialization protocols for microservices.' },
+    { id: 'github', label: 'GitHub Actions Automation', target: 'CI/CD Pipelines', desc: 'Establishes continuous verification checks for student repositories.' }
   ]
 };
 
@@ -172,9 +172,9 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
 
   // Auto-scrolling logs state
   const [logs, setLogs] = useState([
-    `[10:07:01] REGISTRAR: Initializing API node connection...`,
-    `[10:07:02] AUDIT: Reading coursework ledger blocks...`,
-    `[10:07:03] AUDIT: Synced ${COHORT_SIZES[cohort] || '1,240'} candidate student indices.`
+    `[10:07:01] SYSTEM: Connecting to school database...`,
+    `[10:07:02] SYSTEM: Loading coursework history...`,
+    `[10:07:03] SYSTEM: Synced ${COHORT_SIZES[cohort] || '1,240'} student profiles.`
   ]);
 
   const terminalEndRef = useRef(null);
@@ -194,7 +194,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
   const getCompetencyWithBoost = (trackName, baseVal) => {
     let boost = 0;
     if (dept === 'cs') {
-      if (trackName === 'MLOps Pipelines') {
+      if (trackName === 'Data Engineering') {
         if (sandboxUpgrades.includes('kafka')) boost += 15;
         if (sandboxUpgrades.includes('docker')) boost += 15;
       }
@@ -234,10 +234,10 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
     const active = sandboxUpgrades.includes(id);
     if (active) {
       setSandboxUpgrades(prev => prev.filter(item => item !== id));
-      addLog(`SIMULATOR: Removed syllabus upgrade "${label}". "${target}" alignment reduced.`);
+      addLog(`SIMULATOR: Removed syllabus upgrade "${label}". "${target}" readiness reduced.`);
     } else {
       setSandboxUpgrades(prev => [...prev, id]);
-      addLog(`SIMULATOR: Deployed syllabus upgrade "${label}". Boosted "${target}" competency by +15%.`);
+      addLog(`SIMULATOR: Added syllabus upgrade "${label}". Boosted "${target}" readiness by +15%.`);
     }
   };
 
@@ -282,7 +282,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
       prev.map(w => w.id === warningId ? { ...w, status: 'approved' } : w)
     );
     const courseCode = recoText.match(/[A-Z]{2}-\d{3}/)?.[0] || 'CS-302';
-    addLog(`INTERVENTION: Syllabus updates approved for course ${courseCode}. Alignment ledger generated.`);
+    addLog(`INTERVENTION: Syllabus updates approved for course ${courseCode}. Course updated.`);
   };
 
   return (
@@ -293,19 +293,19 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
         <div className="flex items-center gap-6">
           <BrandLogo />
           <span className="px-3 py-1 bg-[#FFD369]/10 text-[#FFD369] rounded-full border border-[#FFD369]/20 text-[10px] font-mono font-bold uppercase tracking-wider">
-            Academic Telemetry Active
+            University Console
           </span>
         </div>
 
         <div className="flex items-center gap-4">
           <span className="text-[10px] font-mono text-[#8A99A5] bg-[#0B0F12] px-3 py-1 rounded border border-[#1E262F]">
-            Node: Institutional Registrar
+            University Registrar
           </span>
           <button
             onClick={() => setCurrentView('gateway')}
             className="px-4 py-2 bg-[#1E262F] hover:bg-[#FF5252] text-[#8A99A5] hover:text-[#F7F9FA] font-bold rounded-lg text-xs transition-all"
           >
-            Exit Console
+            Exit Dashboard
           </button>
         </div>
       </header>
@@ -317,19 +317,19 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
         <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#161B22] to-[#1E262F]/40 shadow-lg">
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Registrar Institution: Apex Tech University</h1>
+              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Institution: Apex Tech University</h1>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/20 text-[9px] font-mono font-bold uppercase">
-                <span className="w-1 h-1 rounded-full bg-[#00E5FF] animate-pulse" />
-                Registrar Node Active
+                <span className="w-1 h-1 rounded-full bg-[#00E5FF] animate-ping" />
+                Registrar Connected
               </span>
             </div>
             <p className="text-xs text-[#8A99A5]">
-              Curricular alignment indexing for <span className="text-[#FFD369]">{DEPT_LABELS[dept] || DEPT_LABELS.cs}</span> • Batch Class of <span className="text-[#00E5FF]">{cohort}</span>
+              Course alignment for <span className="text-[#FFD369]">{DEPT_LABELS[dept] || DEPT_LABELS.cs}</span> • Batch Class of <span className="text-[#00E5FF]">{cohort}</span>
             </p>
           </div>
           <div className="bg-[#0B0F12] border border-[#1E262F] px-4 py-2.5 rounded-lg text-right font-mono text-[10px] text-[#8A99A5] flex flex-col gap-0.5 font-semibold">
-            <div><span className="text-[#8A99A5]/60">ACADEMIC AUDITS:</span> <span className="text-[#00E5FF]">{COHORT_SIZES[cohort] || '1,240'} Sync Ledgers</span></div>
-            <div><span className="text-[#8A99A5]/60">INTERVENTION KEY:</span> <span className="text-[#FFD369]">registrar-node-{dept === 'ds' ? 'ds402' : dept === 'se' ? 'se304' : 'cs302'}</span></div>
+            <div><span className="text-[#8A99A5]/60">STUDENTS IN BATCH:</span> <span className="text-[#00E5FF]">{COHORT_SIZES[cohort] || '1,240'} Students</span></div>
+            <div><span className="text-[#8A99A5]/60">COURSE CODE:</span> <span className="text-[#FFD369]">registrar-node-{dept === 'ds' ? 'ds402' : dept === 'se' ? 'se304' : 'cs302'}</span></div>
           </div>
         </div>
 
@@ -339,9 +339,9 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           {/* Card 1: Cohort Size */}
           <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 flex items-center justify-between shadow-md">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Monitored Cohort Size</span>
+              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Cohort Size</span>
               <span className="text-2xl font-black text-[#F7F9FA]">{COHORT_SIZES[cohort] || '1,240'}</span>
-              <span className="text-[10px] text-[#8A99A5] block">Active class index</span>
+              <span className="text-[10px] text-[#8A99A5] block">Total active students</span>
             </div>
             <div className="w-10 h-10 rounded-xl bg-[#0B0F12] border border-[#1E262F] flex items-center justify-center text-[#00E5FF]">
               <GraduationCap className="w-5 h-5" />
@@ -351,9 +351,9 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           {/* Card 2: Alignment Index */}
           <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 flex items-center justify-between shadow-md">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Market Readiness Index</span>
+              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Employment Readiness</span>
               <span className="text-2xl font-black text-[#FFD369]">{avgCompetency}%</span>
-              <span className="text-[10px] text-[#8A99A5] block">Average curriculum readiness</span>
+              <span className="text-[10px] text-[#8A99A5] block">Average curriculum alignment</span>
             </div>
             <div className="w-10 h-10 rounded-xl bg-[#0B0F12] border border-[#1E262F] flex items-center justify-center text-[#FFD369]">
               <Sparkles className="w-5 h-5" />
@@ -363,9 +363,9 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           {/* Card 3: Active Gaps */}
           <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 flex items-center justify-between shadow-md">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Active Drift Gaps</span>
+              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Curriculum Gaps</span>
               <span className="text-2xl font-black text-[#FF5252]">{activeGapsCount} {activeGapsCount === 1 ? 'Gap' : 'Gaps'}</span>
-              <span className="text-[10px] text-[#8A99A5] block">Lags behind baseline target</span>
+              <span className="text-[10px] text-[#8A99A5] block">Courses below readiness target</span>
             </div>
             <div className="w-10 h-10 rounded-xl bg-[#0B0F12] border border-[#1E262F] flex items-center justify-center text-[#FF5252]">
               <AlertTriangle className="w-5 h-5" />
@@ -375,12 +375,12 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           {/* Card 4: Network Status */}
           <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 flex items-center justify-between shadow-md">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">Telemetry Health</span>
+              <span className="text-[10px] font-mono text-[#8A99A5] uppercase tracking-wider block">System Status</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-2xl font-black text-[#10B981]">100%</span>
-                <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30">SECURE</span>
+                <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30">ONLINE</span>
               </div>
-              <span className="text-[10px] text-[#8A99A5] block">Sync latency: <span className="text-[#00E5FF] font-mono">24ms</span></span>
+              <span className="text-[10px] text-[#8A99A5] block">Data up-to-date</span>
             </div>
             <div className="w-10 h-10 rounded-xl bg-[#0B0F12] border border-[#1E262F] flex items-center justify-center text-[#10B981]">
               <Activity className="w-5 h-5 animate-pulse" />
@@ -397,10 +397,10 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-[#FFD369]" />
-                <h3 className="text-base font-bold text-[#F7F9FA]">Syllabus Simulation Sandbox</h3>
+                <h3 className="text-base font-bold text-[#F7F9FA]">Curriculum Simulator</h3>
               </div>
               <p className="text-xs text-[#8A99A5]">
-                Toggle coursework upgrades to immediately simulate target class alignment modifications.
+                Toggle curriculum upgrades to see how they improve student job readiness.
               </p>
             </div>
 
@@ -435,7 +435,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                     
                     <div className="mt-3 pt-2 border-t border-[#1E262F]/40 flex justify-between items-center w-full">
                       <span className="text-[9px] font-mono text-[#8A99A5]/60 uppercase">Impacts: {upgrade.target}</span>
-                      <span className="text-[10px] font-mono font-extrabold text-[#00E5FF]">+15% boost</span>
+                      <span className="text-[10px] font-mono font-extrabold text-[#00E5FF]">+15% Readiness</span>
                     </div>
                   </button>
                 );
@@ -445,7 +445,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
             {/* Interactive Target Baseline Slider */}
             <div className="pt-4 border-t border-[#1E262F] space-y-3">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-[#F7F9FA] font-mono">Target Competency Baseline</span>
+                <span className="font-bold text-[#F7F9FA] font-mono">Readiness Goal</span>
                 <span className="font-mono text-[#FF5252] font-black">{baselineThreshold}%</span>
               </div>
               <input 
@@ -457,7 +457,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                 className="w-full h-1.5 bg-[#0B0F12] rounded-lg appearance-none cursor-pointer accent-[#FF5252] focus:outline-none"
               />
               <p className="text-[10px] text-[#8A99A5] leading-relaxed">
-                Drag slider to adjust target competency. Tracks falling below this threshold will register drift alerts.
+                Adjust the target goal. Courses below this line will flag curriculum warnings.
               </p>
             </div>
 
@@ -466,8 +466,8 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           {/* Right Panel: Academic Track Alignment Comparative List */}
           <section className="lg:col-span-6 bg-[#161B22] border border-[#1E262F] rounded-xl p-6 space-y-6 shadow-xl flex flex-col justify-between">
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#F7F9FA]">Academic Track Alignment</h3>
-              <p className="text-xs text-[#8A99A5]">Compare graduating cohort competency level to live network job demand.</p>
+              <h3 className="text-base font-bold text-[#F7F9FA]">Curriculum Alignment</h3>
+              <p className="text-xs text-[#8A99A5]">Compare students' skills with current job market requirements.</p>
             </div>
             
             <div className="space-y-4 flex-1 justify-center flex flex-col py-2">
@@ -499,11 +499,11 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                       {/* Alignment warning/sync badges */}
                       {isUnderThreshold ? (
                         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#FF5252]/10 border border-[#FF5252]/20 text-[#FF5252] text-[9px] font-mono font-bold uppercase animate-pulse">
-                          ⚠️ DRIFT
+                          ⚠️ GAP
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/20 text-[#10B981] text-[9px] font-mono font-bold uppercase">
-                          ✓ SYNCED
+                          ✓ ALIGNED
                         </span>
                       )}
                     </div>
@@ -515,7 +515,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                       {showCompetency && (
                         <div className="space-y-1">
                           <div className="flex justify-between text-[9px] font-mono text-[#8A99A5]">
-                            <span>Cohort Competency</span>
+                            <span>Student Skills</span>
                             <span className="text-[#00E5FF] font-bold">{item.competency}%</span>
                           </div>
                           <div className="w-full h-2 bg-[#161B22] rounded-full overflow-hidden">
@@ -533,7 +533,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                       {showDemand && (
                         <div className="space-y-1">
                           <div className="flex justify-between text-[9px] font-mono text-[#8A99A5]">
-                            <span>Network Recruiter Demand</span>
+                            <span>Market Demand</span>
                             <span className="text-[#FFD369] font-bold">{item.demand}%</span>
                           </div>
                           <div className="w-full h-2 bg-[#161B22] rounded-full overflow-hidden">
@@ -550,8 +550,8 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                     {/* Manual Range Adjustment Slider */}
                     <div className="pt-2 border-t border-[#1E262F]/30 space-y-1 opacity-60 hover:opacity-100 transition-opacity">
                       <div className="flex justify-between text-[9px] font-mono text-[#8A99A5]">
-                        <span>Manual Base Tuning</span>
-                        <span>Adjust base parameters</span>
+                        <span>Manual Base Adjustment</span>
+                        <span>Adjust base skills value</span>
                       </div>
                       <input
                         type="range"
@@ -578,7 +578,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                 }`}
               >
                 <span className={`w-2.5 h-2.5 rounded ${showCompetency ? "bg-[#00E5FF]" : "bg-transparent border border-[#8A99A5]"}`} />
-                <span>Cohort Competency Index</span>
+                <span>Student Skills Index</span>
               </button>
               
               <button 
@@ -590,7 +590,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                 }`}
               >
                 <span className={`w-2.5 h-2.5 rounded ${showDemand ? "bg-[#FFD369]" : "bg-transparent border border-[#8A99A5]"}`} />
-                <span>Network Recruiter Demand</span>
+                <span>Market Demand</span>
               </button>
             </div>
           </section>
@@ -604,17 +604,17 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           <section className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-[#FF5252]" />
-              <h3 className="text-base font-bold text-[#F7F9FA]">Curriculum Intervention warnings</h3>
+              <h3 className="text-base font-bold text-[#F7F9FA]">Curriculum Warnings & Updates</h3>
             </div>
 
             <div className="bg-[#161B22] border border-[#1E262F] rounded-xl overflow-hidden shadow-xl">
               <table className="w-full border-collapse text-left text-xs">
                 <thead>
                   <tr className="bg-[#0B0F12]/40 border-b border-[#1E262F] text-[#8A99A5] font-bold font-mono">
-                    <th className="p-4 uppercase tracking-wider w-1/4">Severity Status</th>
-                    <th className="p-4 uppercase tracking-wider w-1/3">Identified Drift Warning</th>
-                    <th className="p-4 uppercase tracking-wider w-2/5">Proposed Course Intervention</th>
-                    <th className="p-4 uppercase tracking-wider text-right w-1/5">Action Telemetry</th>
+                    <th className="p-4 uppercase tracking-wider w-1/4">Priority</th>
+                    <th className="p-4 uppercase tracking-wider w-1/3">Identified Curriculum Gap</th>
+                    <th className="p-4 uppercase tracking-wider w-2/5">Proposed Course Update</th>
+                    <th className="p-4 uppercase tracking-wider text-right w-1/5">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#1E262F]">
@@ -630,7 +630,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                           <span className={`w-1.5 h-1.5 rounded-full ${
                             warn.status === 'approved' ? 'bg-[#10B981]' : 'bg-[#FF5252] animate-pulse'
                           }`} />
-                          {warn.status === 'approved' ? 'INTERVENTION SYNCED' : warn.severity}
+                          {warn.status === 'approved' ? 'UPDATED' : warn.severity}
                         </span>
                       </td>
 
@@ -648,7 +648,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
                       <td className="p-4 text-right">
                         {warn.status === 'approved' ? (
                           <span className="text-[11px] font-bold text-[#10B981] flex items-center justify-end gap-1">
-                            <Check className="w-4 h-4" /> Registrar Updated
+                             <Check className="w-4 h-4" /> Course Updated
                           </span>
                         ) : (
                           <button
@@ -670,7 +670,7 @@ export default function UniversityConsole({ setCurrentView, universityConfig = {
           <section className="space-y-4 flex flex-col">
             <div className="flex items-center justify-between">
               <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#F7F9FA] flex items-center gap-1.5 font-mono">
-                <Terminal className="w-3.5 h-3.5 text-[#00E5FF]" /> Registrar Node Audit Logs
+                <Terminal className="w-3.5 h-3.5 text-[#00E5FF]" /> University Console Logs
               </h4>
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
             </div>

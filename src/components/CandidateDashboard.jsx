@@ -13,16 +13,16 @@ const MOCK_MILESTONES = [
     type: 'github',
     icon: GitBranch,
     title: 'GitHub Commit Synced',
-    desc: 'Optimized asynchronous vector index database clustering paths',
+    desc: 'Improved database search speed for project repositories',
     time: '2026-06-12 14:02 UTC',
-    tags: ['FastAPI', 'Python', 'PgVector']
+    tags: ['FastAPI', 'Python', 'Databases']
   },
   {
     id: 'm2',
     type: 'github',
     icon: GitBranch,
     title: 'GitHub PR Merged',
-    desc: 'Configured multi-node Kafka partition balancing triggers',
+    desc: 'Optimized system message queues for real-time updates',
     time: '2026-06-10 09:15 UTC',
     tags: ['Docker', 'Go', 'Kafka']
   },
@@ -30,10 +30,10 @@ const MOCK_MILESTONES = [
     id: 'm3',
     type: 'registrar',
     icon: FileText,
-    title: 'University Registrar Synced',
-    desc: 'CS-302 Advanced Databases course telemetry: Verified score A',
+    title: 'University Grades Synced',
+    desc: 'CS-302 Advanced Databases course: Grade A (Verified)',
     time: '2026-06-05 11:30 UTC',
-    tags: ['SQL', 'PgVector', 'Indexing']
+    tags: ['SQL', 'Databases', 'Data Search']
   }
 ];
 
@@ -41,29 +41,29 @@ const MOCK_MILESTONES = [
 const CAREER_NODES = {
   mlops: {
     id: 'mlops',
-    title: 'MLOps Platform Architect',
-    description: 'Bridges data pipelines, model registry stores, and real-time streaming infrastructure.',
-    landscape: 'Establish production scale vector index ingestion routines, deploy distributed models on orchestration engines, and monitor GPU hardware clustering.',
-    tradeoffs: 'Higher infrastructure configuration complexity. Tight dependency on model ingestion latencies and database streaming rates.',
-    gaps: ['Apache Kafka Cluster Infrastructure', 'PgVector Clustering Algorithms', 'Kubernetes GPU Scheduling Nodes'],
+    title: 'Data & AI Engineer',
+    description: 'Builds data pipelines, connects machine learning models, and manages real-time data flow.',
+    landscape: 'Create production-ready data pipelines, run AI models in the cloud, and monitor hardware performance.',
+    tradeoffs: 'Requires managing cloud systems and monitoring data flow speeds to avoid lag.',
+    gaps: ['Real-time Messaging (Kafka)', 'Fast Search Databases', 'Cloud Infrastructure (Kubernetes)'],
     color: '#00E5FF'
   },
   systems: {
     id: 'systems',
-    title: 'Distributed Systems Lead',
-    description: 'Designs high-concurrency messaging backbones and customized low-level transaction nodes.',
-    landscape: 'Refine network socket configurations, construct high-throughput storage layers, and deploy concurrent thread pools.',
-    tradeoffs: 'Extremely high engineering discipline needed. Debugging race conditions and network partition failures requires significant telemetry.',
-    gaps: ['Distributed Systems Patching', 'Go Socket Buffer Layer Tuning', 'Raft Consensus Protocol Implementations'],
+    title: 'Backend Systems Lead',
+    description: 'Designs fast, high-performance backends and handles complex data logic.',
+    landscape: 'Optimize network connections, build fast storage systems, and manage parallel background tasks.',
+    tradeoffs: 'High level of detail required. Debugging server errors and connection issues can take time.',
+    gaps: ['Distributed Backend Systems', 'Network Socket Programming', 'Server Consensus Protocols'],
     color: '#FFD369'
   },
   fullstack: {
     id: 'fullstack',
     title: 'Full-Stack Lead',
-    description: 'Coordinates web layout structures with database pipelines and server-side components.',
-    landscape: 'Configure edge server caching frameworks, construct dynamic routing engines, and implement modular API boundaries.',
-    tradeoffs: 'High library rate churn. Must constantly re-balance edge node logic and server-side computations for fast responses.',
-    gaps: ['Next.js Server Component Routing', 'Server-Side Node CS-302 Node Parameters', 'Edge Cache Invalidation Triggers'],
+    description: 'Builds responsive web pages and connects them to servers and databases.',
+    landscape: 'Speed up website page loading, build app routing, and connect APIs.',
+    tradeoffs: 'Web frameworks change quickly. Must balance front-end and back-end logic for fast page loads.',
+    gaps: ['Modern Web Routing (Next.js)', 'Server-Side Development', 'Website Speed Optimization'],
     color: '#F7F9FA'
   }
 };
@@ -71,48 +71,48 @@ const CAREER_NODES = {
 // Mock specifications for SVG stage nodes
 const STAGE_DETAILS = {
   ingestion: {
-    name: 'Ingestion Pipeline Stage',
-    desc: 'Focuses on model vectors insertion rates, Celery task buffers, and PgVector clustering parameters.',
-    stack: 'FastAPI, Celery, PgVector, Redis'
+    name: 'Data Pipeline Stage',
+    desc: 'Focuses on data insertion speed, background tasks, and database search parameters.',
+    stack: 'FastAPI, Celery, Redis'
   },
   registry: {
     name: 'Model Registry Sync Stage',
-    desc: 'Monitors machine learning model parameters, version tagging validation, and remote storage links.',
+    desc: 'Monitors machine learning models, version tagging, and cloud storage links.',
     stack: 'MLflow, Python, Docker'
   },
   mlops: {
-    name: 'MLOps Architect Capstone',
-    desc: 'Validates full-system pipeline orchestrations, Kubernetes GPU nodes scheduler, and live monitoring dashboards.',
+    name: 'Data & AI Engineer Capstone',
+    desc: 'Validates full-system pipelines, cloud servers, and live monitoring dashboards.',
     stack: 'Kubernetes, AWS Cloud, Prometheus, Grafana'
   },
   sockets: {
     name: 'Network Socket Tuning Stage',
-    desc: 'Optimizes Unix low-level syscall bounds, socket buffering rings, and byte buffers allocations.',
-    stack: 'Golang, Linux Syscalls, Socket Buffers'
+    desc: 'Optimizes low-level network parameters, connection speed, and buffer allocations.',
+    stack: 'Golang, Linux, Network Sockets'
   },
   concurrency: {
     name: 'High-Concurrency Backbones Stage',
-    desc: 'Analyzes multi-threaded scheduling loops, race condition controls, and read/write mutex locks.',
+    desc: 'Analyzes parallel code execution, database locks, and background jobs.',
     stack: 'Go channels, Rust sync, Mutex Locks'
   },
   systems: {
     name: 'Systems Engineering Capstone',
-    desc: 'Validates distributed consensus ledgers, Raft replication protocols, and failover parameters.',
-    stack: 'Golang, WebAssembly, Raft Consensus'
+    desc: 'Validates server replication, failover setups, and database sync.',
+    stack: 'Golang, WebAssembly, Server Consensus'
   },
   apis: {
-    name: 'Modular API Caching Stage',
-    desc: 'Establishes type-safe API boundaries, REST/GraphQL interfaces, and database mapping connections.',
+    name: 'API Caching Stage',
+    desc: 'Builds reliable APIs, GraphQL interfaces, and database connections.',
     stack: 'Next.js, Node.js, GraphQL, PostgreSQL'
   },
   caching: {
-    name: 'Edge Cache Invalidation Stage',
-    desc: 'Manages server-side caching pools, Edge network protocols (HTTP/3), and cache eviction logic.',
-    stack: 'Redis, Edge Cache, Vercel edge networks'
+    name: 'Website Speed Optimization Stage',
+    desc: 'Manages server caching, fast network protocols, and website speed optimization.',
+    stack: 'Redis, Edge Caching, CDN'
   },
   fullstack: {
     name: 'Full-Stack Architecture Capstone',
-    desc: 'Validates React Server Components, server-side data stream rendering, and user telemetry security.',
+    desc: 'Validates modern web components, server rendering, and database security.',
     stack: 'React 19, Tailwind CSS, TypeScript, Postgres'
   }
 };
@@ -123,12 +123,12 @@ export default function CandidateDashboard({ setCurrentView }) {
   const [selectedStageNode, setSelectedStageNode] = useState(null);
   const [verifyingMilestone, setVerifyingMilestone] = useState({});
   const [logs, setLogs] = useState([
-    "> [10:04:12] INDEXER: Connected to GitHub webhook event trigger.",
-    "> [10:04:13] LEDGER: Found commit SHA: c829fa1 (PgVector search)",
-    "> [10:04:13] LEDGER: Validated codebase block signatures.",
-    "> [10:04:15] REGISTRAR: Synced grades telemetry for CS-302 (Database)",
-    "> [10:04:15] LEDGER: Cryptographic Block #4812 validated.",
-    "> [10:04:16] INDEXER: Awaiting new repository push event..."
+    "> [10:04:12] PORTFOLIO: Connected to GitHub updates.",
+    "> [10:04:13] PORTFOLIO: Found new project code commit (SHA: c829fa1)",
+    "> [10:04:13] PORTFOLIO: Verified project credentials and code.",
+    "> [10:04:15] SCHOOL: Synced course grades for CS-302 (Databases)",
+    "> [10:04:15] PORTFOLIO: Skills entry verified successfully.",
+    "> [10:04:16] PORTFOLIO: Awaiting new project code pushes..."
   ]);
 
   const handleVerifyStream = (id, title) => {
@@ -137,8 +137,8 @@ export default function CandidateDashboard({ setCurrentView }) {
     const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     setLogs(prev => [
       ...prev,
-      `> [${timeStr}] AUDIT: Initiating check on milestone '${title}'...`,
-      `> [${timeStr}] LEDGER: Contacting registrar nodes for signature verification...`
+      `> [${timeStr}] PORTFOLIO: Checking milestone '${title}'...`,
+      `> [${timeStr}] PORTFOLIO: Contacting school database for verification...`
     ]);
 
     setTimeout(() => {
@@ -146,7 +146,7 @@ export default function CandidateDashboard({ setCurrentView }) {
       const doneTimeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       setLogs(prev => [
         ...prev,
-        `> [${doneTimeStr}] LEDGER: Verified cryptographic block for '${title}' (SHA-256 success).`
+        `> [${doneTimeStr}] PORTFOLIO: Successfully verified and saved '${title}'.`
       ]);
     }, 800);
   };
@@ -155,7 +155,7 @@ export default function CandidateDashboard({ setCurrentView }) {
   const [messages, setMessages] = useState([
     {
       sender: 'coach',
-      text: "Hello! Looking over your Living Portfolio, I see strong FastAPI foundations but notice an active skill gap in Apache Kafka for your target MLOps track. Would you like a targeted open-source project blueprint to patch this gap?",
+      text: "Hello! Looking over your Portfolio, I see strong FastAPI foundations but notice you are missing Kafka skills for your target Data & AI track. Would you like a project idea to fill this gap?",
       time: '10:02 AM'
     },
     {
@@ -165,7 +165,7 @@ export default function CandidateDashboard({ setCurrentView }) {
     },
     {
       sender: 'coach',
-      text: "Perfect. Build a real-time transactional telemetry consumer service. Once you push the repo with passing GitHub actions, your CareerDNA ledger will verify the badge and update recruiters automatically.",
+      text: "Perfect. Build a real-time message consumer service. Once you push the repo to GitHub, your portfolio will verify the skills and update recruiters automatically.",
       time: '10:03 AM'
     }
   ]);
@@ -186,9 +186,9 @@ export default function CandidateDashboard({ setCurrentView }) {
 
     // Simulated response after 1.5 seconds
     setTimeout(() => {
-      let replyText = "Understood. The CareerDNA engine is currently scanning public repository hooks. Check your target roadmap details on the 'Career Path Navigator' tab to see updated skill gaps.";
+      let replyText = "Understood. We are scanning your GitHub repositories. Check your roadmap details on the 'Path Navigator' tab to see your skills update.";
       if (inputText.toLowerCase().includes('project') || inputText.toLowerCase().includes('kafka')) {
-        replyText = "To patch the Apache Kafka skill gap, initialize a producer-consumer setup tracking simulated CPU metrics. Tag the repository with #careerdna-kafka-telemetry to trigger ledger verification.";
+        replyText = "To learn real-time messaging, build a project that handles data streams and tag your repository to verify it.";
       }
       setMessages(prev => [...prev, {
         sender: 'coach',
@@ -209,13 +209,13 @@ export default function CandidateDashboard({ setCurrentView }) {
     setInputText('');
 
     setTimeout(() => {
-      let replyText = "Understood. The CareerDNA engine is currently scanning public repository hooks. Check your target roadmap details on the 'Career Path Navigator' tab to see updated skill gaps.";
+      let replyText = "Understood. We are scanning your GitHub repositories. Check your roadmap details on the 'Path Navigator' tab to see your skills update.";
       if (text.toLowerCase().includes('kafka') || text.toLowerCase().includes('project')) {
-        replyText = "To patch the Apache Kafka skill gap, initialize a producer-consumer setup tracking simulated CPU metrics. Tag the repository with #careerdna-kafka-telemetry to trigger ledger verification.";
+        replyText = "To learn real-time messaging, build a project that handles data streams and tag your repository to verify it.";
       } else if (text.toLowerCase().includes('database') || text.toLowerCase().includes('course') || text.toLowerCase().includes('telemetry')) {
-        replyText = "Your CS-302 coursework has been verified with Grade A. The registrar signature registrar-node-cs302 is cryptographically logged on the ledger.";
+        replyText = "Your CS-302 coursework has been verified with Grade A and logged in your portfolio.";
       } else if (text.toLowerCase().includes('tradeoffs') || text.toLowerCase().includes('distributed')) {
-        replyText = "Systems Engineering requires high engineering discipline. Debugging race conditions and socket buffering layers requires explicit telemetry.";
+        replyText = "Systems Engineering requires solid foundations in network programming and debugging server connections.";
       }
       setMessages(prev => [...prev, {
         sender: 'coach',
@@ -243,7 +243,7 @@ export default function CandidateDashboard({ setCurrentView }) {
               }`}
             >
               <HistoryIcon className="w-4 h-4" />
-              <span>Living Portfolio</span>
+              <span>Skills Portfolio</span>
             </button>
 
             <button
@@ -275,7 +275,7 @@ export default function CandidateDashboard({ setCurrentView }) {
         <div className="p-6 border-t border-[#1E262F] space-y-3 bg-[#0B0F12]/20">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-[#FFD369] animate-pulse" />
-            <span className="text-[10px] font-mono text-[#8A99A5]">Ledger Status: ACTIVE</span>
+            <span className="text-[10px] font-mono text-[#8A99A5]">Portfolio Status: ACTIVE</span>
           </div>
           <button
             onClick={() => setCurrentView('gateway')}
@@ -293,19 +293,19 @@ export default function CandidateDashboard({ setCurrentView }) {
         <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#161B22] to-[#1E262F]/40 shadow-lg">
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Ledger Node: verified-candidate-0482</h1>
+              <h1 className="text-sm font-bold text-[#F7F9FA] font-mono">Portfolio ID: verified-candidate-0482</h1>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/20 text-[9px] font-mono font-bold uppercase">
                 <span className="w-1 h-1 rounded-full bg-[#00E5FF] animate-ping" />
-                Active Sync
+                Synced
               </span>
             </div>
             <p className="text-xs text-[#8A99A5]">
-              Ecosystem registries indexed: <span className="text-[#FFD369]">GitHub Commit Stream</span> & <span className="text-[#FFD369]">University Registrar API</span>
+              Connected accounts: <span className="text-[#FFD369]">GitHub Profile</span> & <span className="text-[#FFD369]">University Course Registry</span>
             </p>
           </div>
           <div className="bg-[#0B0F12] border border-[#1E262F] px-4 py-2.5 rounded-lg text-right font-mono text-[10px] text-[#8A99A5] flex flex-col gap-0.5 font-semibold">
-            <div><span className="text-[#8A99A5]/60">SYNC TOKEN:</span> <span className="text-[#00E5FF] font-bold">SHA-256://8a2b9f30...</span></div>
-            <div><span className="text-[#8A99A5]/60">METRIC RESOLUTION:</span> <span className="text-[#FFD369]">100% Fact-Checked</span></div>
+            <div><span className="text-[#8A99A5]/60">PORTFOLIO STATUS:</span> <span className="text-[#00E5FF] font-bold">Up-to-Date</span></div>
+            <div><span className="text-[#8A99A5]/60">VERIFICATION:</span> <span className="text-[#FFD369]">100% Verified</span></div>
           </div>
         </div>
 
@@ -315,9 +315,9 @@ export default function CandidateDashboard({ setCurrentView }) {
             {/* Left/Middle: Timeline Column */}
             <div className="lg:col-span-2 space-y-6">
               <div className="space-y-1">
-                <h2 className="text-2xl font-extrabold text-[#F7F9FA]">My Living Portfolio</h2>
+                <h2 className="text-2xl font-extrabold text-[#F7F9FA]">My Verified Portfolio</h2>
                 <p className="text-sm text-[#8A99A5]">
-                  Factual history of verified developer milestones synced from registrar nodes and git ledgers.
+                  Verified history of your programming projects and university courses.
                 </p>
               </div>
 
@@ -364,7 +364,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                               animate={{ scale: 1, opacity: 1 }}
                               className="px-3 py-1.5 bg-[#FFD369]/5 text-[#FFD369] border border-[#FFD369]/30 rounded-lg text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-[0_0_12px_rgba(255,211,105,0.08)]"
                             >
-                              ✓ Ledger Cryptographically Verified
+                              ✓ Skill Verified & Confirmed
                             </motion.span>
                           ) : verifyingMilestone[item.id] === 'verifying' ? (
                             <motion.button
@@ -376,14 +376,14 @@ export default function CandidateDashboard({ setCurrentView }) {
                                 transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
                                 className="w-3.5 h-3.5 border-2 border-t-transparent border-[#FFD369] rounded-full inline-block"
                               />
-                              Running Cryptographic Check...
+                              Verifying Skills data...
                             </motion.button>
                           ) : (
                             <button
                               onClick={() => handleVerifyStream(item.id, item.title)}
                               className="px-3 py-1.5 bg-[#1E262F] hover:bg-[#FFD369]/10 hover:text-[#FFD369] hover:border-[#FFD369]/20 border border-[#1E262F] text-[#8A99A5] font-mono font-bold rounded-lg text-[10px] transition-all flex items-center gap-1"
                             >
-                              Verify Stream Integrity
+                              Verify Skill Data
                             </button>
                           )}
                         </motion.div>
@@ -397,9 +397,9 @@ export default function CandidateDashboard({ setCurrentView }) {
             {/* Right: Circular Competency Progress Rings */}
             <div className="space-y-6">
               <div className="space-y-1">
-                <h3 className="text-lg font-bold text-[#F7F9FA]">Competency Index</h3>
+                <h3 className="text-lg font-bold text-[#F7F9FA]">Skills Progress</h3>
                 <p className="text-xs text-[#8A99A5]">
-                  Quantified code volume and index checkpoints.
+                  Overview of verified skills and progress.
                 </p>
               </div>
 
@@ -417,7 +417,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   </div>
                   <div className="space-y-0.5">
                     <h4 className="text-xs font-bold text-[#F7F9FA]">Python & FastAPI Engine</h4>
-                    <p className="text-[10px] text-[#8A99A5]">75 verified codebase telemetry blocks.</p>
+                    <p className="text-[10px] text-[#8A99A5]">75 verified project files.</p>
                   </div>
                 </div>
 
@@ -433,7 +433,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   </div>
                   <div className="space-y-0.5">
                     <h4 className="text-xs font-bold text-[#F7F9FA]">Infrastructure & Docker</h4>
-                    <p className="text-[10px] text-[#8A99A5]">50 pipeline build logs indexed.</p>
+                    <p className="text-[10px] text-[#8A99A5]">50 successful build runs.</p>
                   </div>
                 </div>
 
@@ -449,7 +449,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   </div>
               <div className="space-y-0.5">
                     <h4 className="text-xs font-bold text-[#F7F9FA]">Go Systems Architecture</h4>
-                    <p className="text-[10px] text-[#8A99A5]">35 system socket routines parsed.</p>
+                    <p className="text-[10px] text-[#8A99A5]">35 network programs verified.</p>
                   </div>
                 </div>
 
@@ -459,10 +459,10 @@ export default function CandidateDashboard({ setCurrentView }) {
               <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-5 space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-[#1E262F]">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#F7F9FA] flex items-center gap-1.5">
-                    <Terminal className="w-4 h-4 text-[#00E5FF]" /> Live Sync Telemetry
+                    <Terminal className="w-4 h-4 text-[#00E5FF]" /> Live Sync Logs
                   </h4>
                   <span className="flex items-center gap-1 text-[9px] font-mono text-[#00E5FF]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" /> INDEXER ACTIVE
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" /> SYNC RUNNING
                   </span>
                 </div>
                 <div className="bg-[#0B0F12] border border-[#1E262F] rounded p-3 font-mono text-[10px] text-[#8A99A5] space-y-1.5 h-36 overflow-y-auto">
@@ -481,7 +481,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                       </div>
                     );
                   })}
-                  <div className="text-[#8A99A5]/40 animate-pulse">&gt; [Sync Telemetry Engine Running...]</div>
+                  <div className="text-[#8A99A5]/40 animate-pulse">&gt; [Sync System Running...]</div>
                 </div>
               </div>
 
@@ -496,7 +496,7 @@ export default function CandidateDashboard({ setCurrentView }) {
             <div className="p-4 bg-[#FF5252]/10 border border-[#FF5252]/30 rounded-xl flex gap-3 items-center">
               <AlertTriangle className="w-5 h-5 text-[#FF5252] flex-shrink-0 animate-pulse" />
               <p className="text-xs font-bold text-[#F7F9FA]">
-                Navigation Mode Active: Visualizing 40-Year Macro Trajectories. Zero predictive black-box metrics.
+                Path Navigator Active: Explore career paths and see which skills you need to learn.
               </p>
             </div>
 
@@ -505,8 +505,8 @@ export default function CandidateDashboard({ setCurrentView }) {
               {/* Left/Middle: Custom Interactive SVG Tree */}
               <div className="lg:col-span-2 bg-[#161B22] border border-[#1E262F] rounded-xl p-6 flex flex-col justify-between min-h-[400px]">
                 <div className="space-y-1">
-                  <h3 className="text-base font-bold text-[#F7F9FA]">Macro Trajectory Roadmap</h3>
-                  <p className="text-xs text-[#8A99A5]">Select a trajectory path node below to inspect milestones, design constraints, and identified gaps.</p>
+                  <h3 className="text-base font-bold text-[#F7F9FA]">Career Path Roadmap</h3>
+                  <p className="text-xs text-[#8A99A5]">Select a role or step on the roadmap to see skills and requirements.</p>
                 </div>
 
                 {/* SVG Branches Layout */}
@@ -555,7 +555,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                     <g className="cursor-default">
                       <circle cx="50" cy="120" r="10" fill="#161B22" stroke="#8A99A5" strokeWidth="2.5" />
                       <circle cx="50" cy="120" r="4" fill="#8A99A5" />
-                      <text x="50" y="142" fill="#8A99A5" fontSize="7.5" fontWeight="bold" fontFamily="monospace" textAnchor="middle">FOOTPRINT</text>
+                      <text x="50" y="142" fill="#8A99A5" fontSize="7.5" fontWeight="bold" fontFamily="monospace" textAnchor="middle">START</text>
                     </g>
 
                     {/* ----------------- MLOPS PATH NODES ----------------- */}
@@ -563,19 +563,19 @@ export default function CandidateDashboard({ setCurrentView }) {
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('mlops'); setSelectedStageNode(STAGE_DETAILS.ingestion); }}>
                       <circle cx="170" cy="60" r="8" fill="#161B22" stroke={selectedPathNode === 'mlops' ? '#00E5FF' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'mlops' && <circle cx="170" cy="60" r="3" fill="#00E5FF" />}
-                      <text x="170" y="48" fill={selectedPathNode === 'mlops' ? '#00E5FF' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">INGESTION</text>
+                      <text x="170" y="48" fill={selectedPathNode === 'mlops' ? '#00E5FF' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">PIPELINES</text>
                     </g>
                     {/* Stage 2 */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('mlops'); setSelectedStageNode(STAGE_DETAILS.registry); }}>
                       <circle cx="290" cy="60" r="8" fill="#161B22" stroke={selectedPathNode === 'mlops' ? '#00E5FF' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'mlops' && <circle cx="290" cy="60" r="3" fill="#00E5FF" />}
-                      <text x="290" y="48" fill={selectedPathNode === 'mlops' ? '#00E5FF' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">REGISTRY</text>
+                      <text x="290" y="48" fill={selectedPathNode === 'mlops' ? '#00E5FF' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">VERSIONS</text>
                     </g>
                     {/* Stage 3 (Destination) */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('mlops'); setSelectedStageNode(STAGE_DETAILS.mlops); }}>
                       <circle cx="410" cy="60" r="12" fill={selectedPathNode === 'mlops' ? '#00E5FF' : '#161B22'} stroke="#00E5FF" strokeWidth="2.5" />
                       <text x="410" y="63" fill={selectedPathNode === 'mlops' ? '#0B0F12' : '#00E5FF'} fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">ML</text>
-                      <text x="410" y="82" fill={selectedPathNode === 'mlops' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">MLOps Arch</text>
+                      <text x="410" y="82" fill={selectedPathNode === 'mlops' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'mlops' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">Data & AI</text>
                     </g>
 
                     {/* ----------------- SYSTEMS PATH NODES ----------------- */}
@@ -583,19 +583,19 @@ export default function CandidateDashboard({ setCurrentView }) {
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('systems'); setSelectedStageNode(STAGE_DETAILS.sockets); }}>
                       <circle cx="170" cy="120" r="8" fill="#161B22" stroke={selectedPathNode === 'systems' ? '#FFD369' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'systems' && <circle cx="170" cy="120" r="3" fill="#FFD369" />}
-                      <text x="170" y="140" fill={selectedPathNode === 'systems' ? '#FFD369' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SOCKETS</text>
+                      <text x="170" y="140" fill={selectedPathNode === 'systems' ? '#FFD369' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">NETWORKS</text>
                     </g>
                     {/* Stage 2 */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('systems'); setSelectedStageNode(STAGE_DETAILS.concurrency); }}>
                       <circle cx="290" cy="120" r="8" fill="#161B22" stroke={selectedPathNode === 'systems' ? '#FFD369' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'systems' && <circle cx="290" cy="120" r="3" fill="#FFD369" />}
-                      <text x="290" y="140" fill={selectedPathNode === 'systems' ? '#FFD369' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">CONCURRENCY</text>
+                      <text x="290" y="140" fill={selectedPathNode === 'systems' ? '#FFD369' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">THREADS</text>
                     </g>
                     {/* Stage 3 (Destination) */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('systems'); setSelectedStageNode(STAGE_DETAILS.systems); }}>
                       <circle cx="410" cy="120" r="12" fill={selectedPathNode === 'systems' ? '#FFD369' : '#161B22'} stroke="#FFD369" strokeWidth="2.5" />
                       <text x="410" y="123" fill={selectedPathNode === 'systems' ? '#0B0F12' : '#FFD369'} fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">DS</text>
-                      <text x="410" y="142" fill={selectedPathNode === 'systems' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">Systems Lead</text>
+                      <text x="410" y="142" fill={selectedPathNode === 'systems' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'systems' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">Backend Lead</text>
                     </g>
 
                     {/* ----------------- FULL-STACK PATH NODES ----------------- */}
@@ -603,19 +603,19 @@ export default function CandidateDashboard({ setCurrentView }) {
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('fullstack'); setSelectedStageNode(STAGE_DETAILS.apis); }}>
                       <circle cx="170" cy="180" r="8" fill="#161B22" stroke={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'fullstack' && <circle cx="170" cy="180" r="3" fill="#F7F9FA" />}
-                      <text x="170" y="200" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">APIS</text>
+                      <text x="170" y="200" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">APIs</text>
                     </g>
                     {/* Stage 2 */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('fullstack'); setSelectedStageNode(STAGE_DETAILS.caching); }}>
                       <circle cx="290" cy="180" r="8" fill="#161B22" stroke={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#1E262F'} strokeWidth="2" />
                       {selectedPathNode === 'fullstack' && <circle cx="290" cy="180" r="3" fill="#F7F9FA" />}
-                      <text x="290" y="200" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">CACHING</text>
+                      <text x="290" y="200" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.25} fontSize="7" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SPEED</text>
                     </g>
                     {/* Stage 3 (Destination) */}
                     <g className="cursor-pointer" onClick={() => { setSelectedPathNode('fullstack'); setSelectedStageNode(STAGE_DETAILS.fullstack); }}>
                       <circle cx="410" cy="180" r="12" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#161B22'} stroke="#F7F9FA" strokeWidth="2.5" />
                       <text x="410" y="183" fill={selectedPathNode === 'fullstack' ? '#0B0F12' : '#F7F9FA'} fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">FS</text>
-                      <text x="410" y="202" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">Full-Stack Lead</text>
+                      <text x="410" y="202" fill={selectedPathNode === 'fullstack' ? '#F7F9FA' : '#8A99A5'} opacity={selectedPathNode === 'fullstack' ? 1 : 0.3} fontSize="7.5" fontWeight="bold" textAnchor="middle">Full-Stack</text>
                     </g>
                   </svg>
                 </div>
@@ -639,7 +639,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   </div>
                 ) : (
                   <div className="text-[10px] text-[#8A99A5] text-center font-mono mt-4">
-                    Interact with individual nodes on the tree diagram to view step-by-step verification specifications.
+                    Click on the circles on the roadmap to see skill descriptions and technologies.
                   </div>
                 )}
               </div>
@@ -649,7 +649,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                 <div className="bg-[#161B22] border border-[#1E262F] rounded-xl p-6 space-y-6">
                   <div>
                     <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-[#1E262F] text-[#8A99A5]">
-                      TRAJECTORY TELEMETRY
+                      PATH INFO
                     </span>
                     <h3 className="text-lg font-bold text-[#F7F9FA] mt-2">
                       {CAREER_NODES[selectedPathNode].title}
@@ -662,7 +662,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   {/* Realistic Project Landscapes */}
                   <div className="space-y-1.5">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-[#00E5FF] font-mono">
-                      Realistic Project Landscape
+                      Key Responsibilities
                     </h4>
                     <p className="text-xs text-[#8A99A5] leading-relaxed bg-[#0B0F12] p-3 rounded-lg border border-[#1E262F]">
                       {CAREER_NODES[selectedPathNode].landscape}
@@ -672,7 +672,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                   {/* System Tradeoffs */}
                   <div className="space-y-1.5">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-[#8A99A5] font-mono">
-                      System Design Trade-offs
+                      Typical Challenges
                     </h4>
                     <p className="text-xs text-[#8A99A5] leading-relaxed">
                       {CAREER_NODES[selectedPathNode].tradeoffs}
@@ -682,14 +682,14 @@ export default function CandidateDashboard({ setCurrentView }) {
                   {/* Red alert Skill Gaps */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-[#FF5252] font-mono flex items-center gap-1.5">
-                      <AlertTriangle className="w-4 h-4 text-[#FF5252]" /> Identified Skill Gaps
+                      <AlertTriangle className="w-4 h-4 text-[#FF5252]" /> Suggested Skills to Learn
                     </h4>
                     <div className="bg-[#FF5252]/5 border border-[#FF5252]/20 rounded-xl p-4 space-y-2">
                       <ul className="space-y-1.5">
                         {CAREER_NODES[selectedPathNode].gaps.map((gap, idx) => (
                           <li key={idx} className="text-xs text-[#FF5252] font-mono flex items-start gap-2">
                             <span className="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#FF5252]" />
-                            <span>Missing Verification: {gap}</span>
+                            <span>Not yet verified: {gap}</span>
                           </li>
                         ))}
                       </ul>
@@ -711,9 +711,9 @@ export default function CandidateDashboard({ setCurrentView }) {
             <div className="p-4 border-b border-[#1E262F] bg-[#0B0F12]/40 flex items-center justify-between">
               <div className="space-y-0.5">
                 <h3 className="text-sm font-bold text-[#F7F9FA]">
-                  CareerDNA Interactive AI Coach — Real-Time Trajectory Navigation
+                  CareerDNA AI Coach — Personalized Career Guidance
                 </h3>
-                <p className="text-[10px] text-[#8A99A5]">Direct telemetry connection to your living portfolio. Zero black-box metrics.</p>
+                <p className="text-[10px] text-[#8A99A5]">Connected to your verified portfolio. Simple tips to fill skill gaps.</p>
               </div>
               <span className="flex items-center gap-1.5 bg-[#FFD369]/10 text-[#FFD369] px-2.5 py-1 rounded-full border border-[#FFD369]/20 text-[10px] font-mono">
                 <Terminal className="w-3 h-3" /> ROADMAP SYNCED
@@ -776,7 +776,7 @@ export default function CandidateDashboard({ setCurrentView }) {
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder="Ask about your skill gaps, repo tag triggers, or trajectory paths..."
+                placeholder="Ask about your skills, how to verify them, or career advice..."
                 className="flex-1 px-4 py-3 bg-[#0B0F12] border border-[#1E262F] rounded-lg text-[#F7F9FA] placeholder-[#8A99A5]/50 focus:border-[#00E5FF] focus:outline-none transition-colors text-xs"
               />
               <button
